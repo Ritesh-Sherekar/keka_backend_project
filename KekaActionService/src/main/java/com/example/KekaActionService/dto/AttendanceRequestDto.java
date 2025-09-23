@@ -1,0 +1,20 @@
+package com.example.KekaActionService.dto;
+
+import com.example.KekaActionService.entity.Attendance;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class AttendanceRequestDto {
+    private Long employeeID;
+    private LocalDate attendanceDate;
+    private LocalDateTime checkInTime;
+    private LocalDateTime checkOutTime;
+    private Attendance.Status status;
+}

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ActionDeleteService")
+@RequestMapping("/ActionDeleteEmpService")
 public class EmployeeDeleteController {
     private final EmployeeDeleteService employeeDeleteService;
 
