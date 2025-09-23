@@ -1,0 +1,15 @@
+server:
+  port: 4581
+spring:
+  application:
+    name: KekeActionService
+  datasource:
+    username: keka_clone
+    password: sarasu10
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.3.30:1521:xe
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
