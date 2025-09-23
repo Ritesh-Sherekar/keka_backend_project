@@ -1,0 +1,615 @@
+2025-09-23T10:53:36.010+05:30  INFO 9348 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 9348 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T10:53:36.014+05:30  INFO 9348 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T10:53:37.107+05:30  INFO 9348 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T10:53:37.203+05:30  INFO 9348 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 2 JPA repository interfaces.
+2025-09-23T10:53:37.920+05:30  INFO 9348 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9113 (http)
+2025-09-23T10:53:37.936+05:30  INFO 9348 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T10:53:37.937+05:30  INFO 9348 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T10:53:38.005+05:30  INFO 9348 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T10:53:38.005+05:30  INFO 9348 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1899 ms
+2025-09-23T10:53:38.512+05:30  INFO 9348 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T10:53:38.722+05:30  INFO 9348 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T10:53:38.822+05:30  INFO 9348 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T10:53:39.360+05:30  INFO 9348 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T10:53:39.426+05:30  INFO 9348 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T10:53:39.431+05:30  WARN 9348 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T10:53:39.927+05:30  INFO 9348 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@29c1249a
+2025-09-23T10:53:39.929+05:30  INFO 9348 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T10:53:40.174+05:30  WARN 9348 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T10:53:40.460+05:30  INFO 9348 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T10:53:42.105+05:30  INFO 9348 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T10:53:46.303+05:30  INFO 9348 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T10:53:47.097+05:30  INFO 9348 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T10:53:47.097+05:30  WARN 9348 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T10:53:47.129+05:30  WARN 9348 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T10:53:47.608+05:30 DEBUG 9348 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T10:53:48.106+05:30  INFO 9348 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9113 (http) with context path '/'
+2025-09-23T10:53:48.125+05:30  INFO 9348 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 12.812 seconds (process running for 13.434)
+2025-09-23T10:54:27.293+05:30  INFO 9348 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T10:54:27.357+05:30  INFO 9348 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T10:54:27.362+05:30  INFO 9348 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T10:54:27.384+05:30  INFO 9348 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T10:54:27.856+05:30  INFO 9348 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T10:54:34.233+05:30  INFO 19244 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 19244 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T10:54:34.236+05:30  INFO 19244 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T10:54:35.261+05:30  INFO 19244 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T10:54:35.345+05:30  INFO 19244 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 2 JPA repository interfaces.
+2025-09-23T10:54:36.053+05:30  INFO 19244 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9113 (http)
+2025-09-23T10:54:36.067+05:30  INFO 19244 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T10:54:36.067+05:30  INFO 19244 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T10:54:36.134+05:30  INFO 19244 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T10:54:36.134+05:30  INFO 19244 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1797 ms
+2025-09-23T10:54:36.408+05:30  INFO 19244 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T10:54:36.470+05:30  INFO 19244 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T10:54:36.517+05:30  INFO 19244 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T10:54:36.846+05:30  INFO 19244 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T10:54:36.882+05:30  INFO 19244 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T10:54:36.886+05:30  WARN 19244 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T10:54:37.238+05:30  INFO 19244 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@2c815fdc
+2025-09-23T10:54:37.240+05:30  INFO 19244 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T10:54:37.353+05:30  WARN 19244 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T10:54:37.573+05:30  INFO 19244 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T10:54:38.460+05:30  INFO 19244 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T10:54:38.774+05:30  INFO 19244 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T10:54:39.215+05:30  INFO 19244 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T10:54:39.216+05:30  WARN 19244 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T10:54:39.236+05:30  WARN 19244 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T10:54:39.640+05:30 DEBUG 19244 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T10:54:39.903+05:30  INFO 19244 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9113 (http) with context path '/'
+2025-09-23T10:54:39.914+05:30  INFO 19244 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 6.324 seconds (process running for 6.799)
+2025-09-23T11:08:01.234+05:30  INFO 19244 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T11:08:01.289+05:30  INFO 19244 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T11:08:01.304+05:30  INFO 19244 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:08:01.324+05:30  INFO 19244 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T11:08:01.335+05:30  INFO 19244 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T11:08:12.152+05:30  INFO 13848 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 13848 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T11:08:12.159+05:30  INFO 13848 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T11:08:13.797+05:30  INFO 13848 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T11:08:13.891+05:30  INFO 13848 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 2 JPA repository interfaces.
+2025-09-23T11:08:14.912+05:30  INFO 13848 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9113 (http)
+2025-09-23T11:08:14.929+05:30  INFO 13848 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T11:08:14.929+05:30  INFO 13848 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T11:08:15.011+05:30  INFO 13848 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T11:08:15.011+05:30  INFO 13848 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2606 ms
+2025-09-23T11:08:15.533+05:30  INFO 13848 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T11:08:15.714+05:30  INFO 13848 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T11:08:15.868+05:30  INFO 13848 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T11:08:16.333+05:30  INFO 13848 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T11:08:16.415+05:30  INFO 13848 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T11:08:16.421+05:30  WARN 13848 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T11:08:16.989+05:30  INFO 13848 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@782cc5fa
+2025-09-23T11:08:16.992+05:30  INFO 13848 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T11:08:17.492+05:30  WARN 13848 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T11:08:17.688+05:30  INFO 13848 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T11:08:19.246+05:30  INFO 13848 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T11:08:19.524+05:30  INFO 13848 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:08:20.105+05:30  INFO 13848 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T11:08:20.106+05:30  WARN 13848 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T11:08:20.129+05:30  WARN 13848 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T11:08:20.455+05:30 DEBUG 13848 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T11:08:20.731+05:30  INFO 13848 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9113 (http) with context path '/'
+2025-09-23T11:08:20.741+05:30  INFO 13848 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 10.374 seconds (process running for 12.877)
+2025-09-23T11:09:25.286+05:30  INFO 13848 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T11:09:25.342+05:30  INFO 13848 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T11:09:25.346+05:30  INFO 13848 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:09:25.348+05:30  INFO 13848 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T11:09:25.368+05:30  INFO 13848 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T11:09:34.622+05:30  INFO 14984 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 14984 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T11:09:34.624+05:30  INFO 14984 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T11:09:36.587+05:30  INFO 14984 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T11:09:36.663+05:30  INFO 14984 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 2 JPA repository interfaces.
+2025-09-23T11:09:37.616+05:30  INFO 14984 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9113 (http)
+2025-09-23T11:09:37.629+05:30  INFO 14984 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T11:09:37.630+05:30  INFO 14984 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T11:09:37.710+05:30  INFO 14984 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T11:09:37.710+05:30  INFO 14984 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3008 ms
+2025-09-23T11:09:38.059+05:30  INFO 14984 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T11:09:38.113+05:30  INFO 14984 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T11:09:38.159+05:30  INFO 14984 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T11:09:38.499+05:30  INFO 14984 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T11:09:38.534+05:30  INFO 14984 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T11:09:38.537+05:30  WARN 14984 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T11:09:38.806+05:30  INFO 14984 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@19ec5357
+2025-09-23T11:09:38.808+05:30  INFO 14984 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T11:09:38.910+05:30  WARN 14984 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T11:09:39.079+05:30  INFO 14984 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T11:09:40.005+05:30  INFO 14984 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T11:09:40.304+05:30  INFO 14984 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:09:40.711+05:30  INFO 14984 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T11:09:40.711+05:30  WARN 14984 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T11:09:40.859+05:30  WARN 14984 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T11:09:41.331+05:30 DEBUG 14984 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T11:09:41.765+05:30  INFO 14984 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9113 (http) with context path '/'
+2025-09-23T11:09:41.776+05:30  INFO 14984 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 7.975 seconds (process running for 8.45)
+2025-09-23T11:21:12.324+05:30  INFO 14984 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T11:21:12.392+05:30  INFO 14984 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T11:21:12.398+05:30  INFO 14984 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:21:12.401+05:30  INFO 14984 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T11:21:12.428+05:30  INFO 14984 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T11:21:15.349+05:30  INFO 18584 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 18584 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T11:21:15.351+05:30  INFO 18584 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T11:21:16.565+05:30  INFO 18584 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T11:21:16.659+05:30  INFO 18584 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 2 JPA repository interfaces.
+2025-09-23T11:21:17.408+05:30  INFO 18584 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9113 (http)
+2025-09-23T11:21:17.426+05:30  INFO 18584 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T11:21:17.426+05:30  INFO 18584 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T11:21:17.537+05:30  INFO 18584 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T11:21:17.539+05:30  INFO 18584 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2130 ms
+2025-09-23T11:21:17.850+05:30  INFO 18584 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T11:21:17.924+05:30  INFO 18584 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T11:21:17.975+05:30  INFO 18584 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T11:21:18.308+05:30  INFO 18584 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T11:21:18.348+05:30  INFO 18584 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T11:21:18.352+05:30  WARN 18584 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T11:21:19.054+05:30  INFO 18584 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@60844992
+2025-09-23T11:21:19.055+05:30  INFO 18584 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T11:21:19.215+05:30  WARN 18584 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T11:21:19.443+05:30  INFO 18584 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T11:21:20.481+05:30  INFO 18584 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T11:21:20.708+05:30  INFO 18584 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:21:21.216+05:30  INFO 18584 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T11:21:21.220+05:30  WARN 18584 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T11:21:21.626+05:30  WARN 18584 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T11:21:22.037+05:30 DEBUG 18584 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T11:21:22.694+05:30  INFO 18584 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9113 (http) with context path '/'
+2025-09-23T11:21:22.707+05:30  INFO 18584 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 7.993 seconds (process running for 8.431)
+2025-09-23T11:21:39.416+05:30  INFO 18584 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T11:21:39.460+05:30  INFO 18584 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T11:21:39.465+05:30  INFO 18584 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:21:39.467+05:30  INFO 18584 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T11:21:39.476+05:30  INFO 18584 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T11:21:42.030+05:30  INFO 1928 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 1928 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T11:21:42.033+05:30  INFO 1928 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T11:21:43.102+05:30  INFO 1928 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T11:21:43.180+05:30  INFO 1928 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+2025-09-23T11:21:43.843+05:30  INFO 1928 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 4580 (http)
+2025-09-23T11:21:43.858+05:30  INFO 1928 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T11:21:43.859+05:30  INFO 1928 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T11:21:43.948+05:30  INFO 1928 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T11:21:43.949+05:30  INFO 1928 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1857 ms
+2025-09-23T11:21:44.231+05:30  INFO 1928 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T11:21:44.290+05:30  INFO 1928 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T11:21:44.330+05:30  INFO 1928 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T11:21:44.653+05:30  INFO 1928 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T11:21:44.687+05:30  INFO 1928 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T11:21:44.691+05:30  WARN 1928 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T11:21:45.013+05:30  INFO 1928 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@6a902015
+2025-09-23T11:21:45.016+05:30  INFO 1928 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T11:21:45.148+05:30  WARN 1928 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T11:21:45.357+05:30  INFO 1928 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T11:21:46.251+05:30  INFO 1928 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T11:21:46.489+05:30  INFO 1928 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:21:46.892+05:30  INFO 1928 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T11:21:46.892+05:30  WARN 1928 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T11:21:47.014+05:30  WARN 1928 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T11:21:47.385+05:30 DEBUG 1928 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T11:21:47.739+05:30  INFO 1928 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 4580 (http) with context path '/'
+2025-09-23T11:21:47.750+05:30  INFO 1928 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 6.316 seconds (process running for 6.783)
+2025-09-23T11:22:05.703+05:30  INFO 1928 --- [security_service] [http-nio-4580-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-23T11:22:05.703+05:30  INFO 1928 --- [security_service] [http-nio-4580-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-23T11:22:05.705+05:30  INFO 1928 --- [security_service] [http-nio-4580-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-23T11:22:05.756+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-09-23T11:22:05.771+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+2025-09-23T11:22:05.876+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:05.920+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui.css
+2025-09-23T11:22:05.920+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-09-23T11:22:05.920+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui.css
+2025-09-23T11:22:05.920+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-09-23T11:22:05.922+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.css
+2025-09-23T11:22:05.925+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.css
+2025-09-23T11:22:05.925+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-09-23T11:22:05.925+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-09-23T11:22:05.928+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-initializer.js
+2025-09-23T11:22:05.928+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
+2025-09-23T11:22:05.961+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:05.965+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:05.977+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:06.064+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:06.131+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:06.259+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/favicon-32x32.png
+2025-09-23T11:22:06.260+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/favicon-32x32.png
+2025-09-23T11:22:06.260+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs/swagger-config
+2025-09-23T11:22:06.261+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs/swagger-config
+2025-09-23T11:22:06.265+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:06.423+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:22:06.432+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-09-23T11:22:06.433+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-09-23T11:22:07.179+05:30  INFO 1928 --- [security_service] [http-nio-4580-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 717 ms
+2025-09-23T11:22:07.207+05:30 DEBUG 1928 --- [security_service] [http-nio-4580-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:39:52.514+05:30  INFO 1928 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T11:39:52.562+05:30  INFO 1928 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T11:39:52.578+05:30  INFO 1928 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:39:52.596+05:30  INFO 1928 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T11:39:52.605+05:30  INFO 1928 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T11:40:09.174+05:30  INFO 14856 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 14856 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T11:40:09.178+05:30  INFO 14856 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T11:40:12.385+05:30  INFO 14856 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T11:40:12.507+05:30  INFO 14856 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 2 JPA repository interfaces.
+2025-09-23T11:40:14.802+05:30  INFO 14856 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 4580 (http)
+2025-09-23T11:40:14.943+05:30  INFO 14856 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T11:40:14.943+05:30  INFO 14856 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T11:40:15.352+05:30  INFO 14856 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T11:40:15.353+05:30  INFO 14856 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6047 ms
+2025-09-23T11:40:18.355+05:30  INFO 14856 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T11:40:19.600+05:30  INFO 14856 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T11:40:21.355+05:30  INFO 14856 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T11:40:24.909+05:30  INFO 14856 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T11:40:25.268+05:30  INFO 14856 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T11:40:25.283+05:30  WARN 14856 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T11:40:27.621+05:30  INFO 14856 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@55d99dc3
+2025-09-23T11:40:27.622+05:30  INFO 14856 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T11:40:28.697+05:30  WARN 14856 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T11:40:29.318+05:30  INFO 14856 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T11:40:35.881+05:30  INFO 14856 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T11:40:36.465+05:30  INFO 14856 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T11:40:38.004+05:30  INFO 14856 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T11:40:38.004+05:30  WARN 14856 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T11:40:38.717+05:30  WARN 14856 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T11:40:39.843+05:30 DEBUG 14856 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T11:40:40.810+05:30  INFO 14856 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 4580 (http) with context path '/'
+2025-09-23T11:40:40.886+05:30  INFO 14856 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 33.537 seconds (process running for 36.438)
+2025-09-23T11:52:36.772+05:30  INFO 14856 --- [security_service] [http-nio-4580-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-23T11:52:36.773+05:30  INFO 14856 --- [security_service] [http-nio-4580-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-23T11:52:36.773+05:30  INFO 14856 --- [security_service] [http-nio-4580-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-09-23T11:52:36.877+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-09-23T11:52:36.898+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-09-23T11:52:37.900+05:30  INFO 14856 --- [security_service] [http-nio-4580-exec-2] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 921 ms
+2025-09-23T11:52:38.072+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:52:38.127+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /favicon.ico
+2025-09-23T11:52:38.128+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /favicon.ico
+2025-09-23T11:52:38.144+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:52:38.155+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-09-23T11:52:38.155+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-09-23T11:52:38.187+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T11:54:49.158+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-09-23T11:54:49.160+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-09-23T11:54:49.166+05:30 DEBUG 14856 --- [security_service] [http-nio-4580-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-09-23T12:13:27.175+05:30  INFO 14856 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T12:13:27.254+05:30  INFO 14856 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T12:13:27.435+05:30  INFO 14856 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T12:13:27.780+05:30  INFO 14856 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T12:13:27.801+05:30  INFO 14856 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T12:13:40.907+05:30  INFO 12512 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 12512 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T12:13:40.910+05:30  INFO 12512 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T12:13:43.020+05:30  INFO 12512 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T12:13:43.447+05:30  INFO 12512 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 411 ms. Found 2 JPA repository interfaces.
+2025-09-23T12:13:45.727+05:30  INFO 12512 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 4580 (http)
+2025-09-23T12:13:45.829+05:30  INFO 12512 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T12:13:45.829+05:30  INFO 12512 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T12:13:46.230+05:30  INFO 12512 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T12:13:46.230+05:30  INFO 12512 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5276 ms
+2025-09-23T12:13:47.397+05:30  INFO 12512 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T12:13:48.950+05:30  INFO 12512 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T12:13:49.528+05:30  INFO 12512 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T12:13:51.187+05:30  INFO 12512 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T12:13:51.439+05:30  INFO 12512 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T12:13:51.444+05:30  WARN 12512 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T12:13:53.884+05:30  INFO 12512 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@c4cceb
+2025-09-23T12:13:53.886+05:30  INFO 12512 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T12:13:55.912+05:30  WARN 12512 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T12:13:56.483+05:30  INFO 12512 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T12:13:59.886+05:30  INFO 12512 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T12:14:01.574+05:30  INFO 12512 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T12:14:02.714+05:30  INFO 12512 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T12:14:02.714+05:30  WARN 12512 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T12:14:02.871+05:30  WARN 12512 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T12:14:03.701+05:30 DEBUG 12512 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T12:14:05.707+05:30  INFO 12512 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 4580 (http) with context path '/'
+2025-09-23T12:14:05.758+05:30  INFO 12512 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 26.457 seconds (process running for 28.291)
+2025-09-23T12:30:02.601+05:30  INFO 12512 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T12:30:02.657+05:30  INFO 12512 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T12:30:02.681+05:30  INFO 12512 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T12:30:02.701+05:30  INFO 12512 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T12:30:02.711+05:30  INFO 12512 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T12:30:17.468+05:30  INFO 19092 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 19092 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T12:30:17.470+05:30  INFO 19092 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T12:30:18.950+05:30  INFO 19092 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T12:30:19.065+05:30  INFO 19092 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 2 JPA repository interfaces.
+2025-09-23T12:30:21.418+05:30  INFO 19092 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 4580 (http)
+2025-09-23T12:30:21.475+05:30  INFO 19092 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T12:30:21.475+05:30  INFO 19092 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T12:30:21.676+05:30  INFO 19092 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T12:30:21.676+05:30  INFO 19092 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4154 ms
+2025-09-23T12:30:22.401+05:30  INFO 19092 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T12:30:22.855+05:30  INFO 19092 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T12:30:23.062+05:30  INFO 19092 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T12:30:23.701+05:30  INFO 19092 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T12:30:23.835+05:30  INFO 19092 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T12:30:23.839+05:30  WARN 19092 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T12:30:24.305+05:30  INFO 19092 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@503556cb
+2025-09-23T12:30:24.316+05:30  INFO 19092 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T12:30:24.494+05:30  WARN 19092 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T12:30:24.822+05:30  INFO 19092 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T12:30:26.063+05:30  INFO 19092 --- [security_service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-23T12:30:29.248+05:30  INFO 19092 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T12:30:30.030+05:30  INFO 19092 --- [security_service] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-23T12:30:30.031+05:30  WARN 19092 --- [security_service] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-23T12:30:30.139+05:30  WARN 19092 --- [security_service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-23T12:30:30.507+05:30 DEBUG 19092 --- [security_service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-09-23T12:30:30.875+05:30  INFO 19092 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 4580 (http) with context path '/'
+2025-09-23T12:30:30.887+05:30  INFO 19092 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Started SecurityServiceApplication in 14.285 seconds (process running for 15.447)
+2025-09-23T12:33:30.518+05:30  INFO 19092 --- [security_service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-23T12:33:30.564+05:30  INFO 19092 --- [security_service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-23T12:33:30.568+05:30  INFO 19092 --- [security_service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-23T12:33:30.571+05:30  INFO 19092 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T12:33:30.580+05:30  INFO 19092 --- [security_service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T12:33:38.733+05:30  INFO 4536 --- [security_service] [main] c.e.s.SecurityServiceApplication         : Starting SecurityServiceApplication using Java 17.0.16 with PID 4536 (C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service\target\classes started by Sreenivas Bandaru in C:\Users\Sreenivas Bandaru\Desktop\keka_clone\keka_clone\security_service)
+2025-09-23T12:33:38.735+05:30  INFO 4536 --- [security_service] [main] c.e.s.SecurityServiceApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-23T12:33:39.837+05:30  INFO 4536 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-23T12:33:39.907+05:30  INFO 4536 --- [security_service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 2 JPA repository interfaces.
+2025-09-23T12:33:40.552+05:30  INFO 4536 --- [security_service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 4580 (http)
+2025-09-23T12:33:40.566+05:30  INFO 4536 --- [security_service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-23T12:33:40.567+05:30  INFO 4536 --- [security_service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-09-23T12:33:40.659+05:30  INFO 4536 --- [security_service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-23T12:33:40.659+05:30  INFO 4536 --- [security_service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1873 ms
+2025-09-23T12:33:40.919+05:30  INFO 4536 --- [security_service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-23T12:33:40.983+05:30  INFO 4536 --- [security_service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-09-23T12:33:41.029+05:30  INFO 4536 --- [security_service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-23T12:33:41.374+05:30  INFO 4536 --- [security_service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-23T12:33:41.425+05:30  INFO 4536 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-23T12:33:41.429+05:30  WARN 4536 --- [security_service] [main] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2025-09-23T12:33:41.728+05:30  INFO 4536 --- [security_service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@30c8c6ab
+2025-09-23T12:33:41.730+05:30  INFO 4536 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-23T12:33:41.857+05:30  WARN 4536 --- [security_service] [main] org.hibernate.dialect.Dialect            : HHH000511: The 11.2.0 version for [org.hibernate.dialect.OracleDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 19.0.0. Check the community dialects project for available legacy versions.
+2025-09-23T12:33:42.055+05:30  INFO 4536 --- [security_service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 11.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-23T12:33:42.266+05:30 ERROR 4536 --- [security_service] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Association 'com.example.security_service.entity.Users.employee_id' targets the type 'int' which is not an '@Entity' type
+2025-09-23T12:33:42.268+05:30 ERROR 4536 --- [security_service] [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtFilter': Unsatisfied dependency expressed through field 'jwtUtil': Error creating bean with name 'jwtUtil': Unsatisfied dependency expressed through field 'userRepo': Error creating bean with name 'userRepository' defined in com.example.security_service.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-09-23T12:33:42.299+05:30  INFO 4536 --- [security_service] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-09-23T12:33:42.304+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [oracle.jdbc.diagnostics.Diagnostic.CLOCK] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.util.TimerThread.mainLoop(Timer.java:563)
+ java.base@17.0.16/java.util.TimerThread.run(Timer.java:516)
+2025-09-23T12:33:42.305+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [oracle.jdbc.driver.BlockSource.ThreadedCachingBlockSource.BlockReleaser] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:325)
+ app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:307)
+ app//oracle.jdbc.driver.BlockSource$ThreadedCachingBlockSource$BlockReleaser.run(BlockSource.java:347)
+2025-09-23T12:33:42.305+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [InterruptTimer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Object.wait(Native Method)
+ java.base@17.0.16/java.util.TimerThread.mainLoop(Timer.java:563)
+ java.base@17.0.16/java.util.TimerThread.run(Timer.java:516)
+2025-09-23T12:33:42.306+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [OJDBC-WORKER-THREAD-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.16/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:401)
+ java.base@17.0.16/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:903)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:842)
+2025-09-23T12:33:42.307+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.16/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.16/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:842)
+2025-09-23T12:33:42.309+05:30  WARN 4536 --- [security_service] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.16/java.lang.Thread.sleep(Native Method)
+ app//com.zaxxer.hikari.util.UtilityElf.quietlySleep(UtilityElf.java:71)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:757)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base@17.0.16/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.16/java.lang.Thread.run(Thread.java:842)
+2025-09-23T12:33:42.313+05:30  WARN 4536 --- [security_service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-09-23T12:33:42.313+05:30  INFO 4536 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-23T12:33:42.327+05:30  INFO 4536 --- [security_service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-23T12:33:42.337+05:30  INFO 4536 --- [security_service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-09-23T12:33:42.465+05:30 ERROR 4536 --- [security_service] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.6.jar:3.5.6]
+	at com.example.security_service.SecurityServiceApplication.main(SecurityServiceApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167) ~[spring-boot-3.5.6.jar:3.5.6]
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtFilter': Unsatisfied dependency expressed through field 'jwtUtil': Error creating bean with name 'jwtUtil': Unsatisfied dependency expressed through field 'userRepo': Error creating bean with name 'userRepository' defined in com.example.security_service.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4464) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:773) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:438) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128) ~[spring-boot-3.5.6.jar:3.5.6]
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtUtil': Unsatisfied dependency expressed through field 'userRepo': Error creating bean with name 'userRepository' defined in com.example.security_service.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1698) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1643) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 55 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.example.security_service.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1760) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1643) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 68 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 81 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Association 'com.example.security_service.entity.Users.employee_id' targets the type 'int' which is not an '@Entity' type
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 93 common frames omitted
+Caused by: org.hibernate.AnnotationException: Association 'com.example.security_service.entity.Users.employee_id' targets the type 'int' which is not an '@Entity' type
+	at org.hibernate.boot.model.internal.ToOneFkSecondPass.doSecondPass(ToOneFkSecondPass.java:110) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processEndOfQueue(InFlightMetadataCollectorImpl.java:1937) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processFkSecondPassesInOrder(InFlightMetadataCollectorImpl.java:1886) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1794) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:334) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 100 common frames omitted
+
