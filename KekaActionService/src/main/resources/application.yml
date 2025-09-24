@@ -1,5 +1,6 @@
 server:
   port: 4581
+
 spring:
   application:
     name: KekeActionService
@@ -8,6 +9,24 @@ spring:
     password: sarasu10
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@192.168.3.30:1521:xe
+  mail:
+    username: abhishekghogare.eidiko@gmail.com
+    password: ${APP_PASSWORD}
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
   jpa:
     hibernate:
