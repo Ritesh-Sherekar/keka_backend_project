@@ -25,7 +25,7 @@ public class Attendance {
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt = LocalDateTime.now();
-    private Boolean easyDelete = false;
+    private Boolean isDelete = false;
     private String grossHours;
 
     @Enumerated(EnumType.STRING)
@@ -39,6 +39,6 @@ public class Attendance {
     private Badge badge = Badge.OUT;
 
     public enum Badge {
-        IN, OUT
+        IN, OUT, Regularized
     }
 }
