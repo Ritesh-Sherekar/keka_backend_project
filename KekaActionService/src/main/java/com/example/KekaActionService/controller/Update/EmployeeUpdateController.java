@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/ActionUpdateService")
+@RequestMapping("/ActionUpdateEmpService")
 public class EmployeeUpdateController {
     private final EmployeeUpdateService employeeUpdateService;
 
