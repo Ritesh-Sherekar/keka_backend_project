@@ -5,11 +5,11 @@ import com.example.KekaActionService.dto.AttendanceClockOutRequestDto;
 import com.example.KekaActionService.dto.AttendanceRegularizationRequestDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.repository.AttendanceRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -41,8 +41,7 @@ public class AttendancePostService {
 
             return attendanceRepo.save(attendance);
         }
-        throw new RuntimeException("Not Found");
-
+        throw new EmployeeIdNotFoundException("Employee With Given ID Not Found");
     }
 
     // Clock Out API
@@ -62,8 +61,7 @@ public class AttendancePostService {
                 }
             }
         }
-
-        throw new RuntimeException("Error");
+        throw new EmployeeIdNotFoundException("Employee With Given ID Not Found");
     }
 
     // Helper Method To Calculate Gross Hours
