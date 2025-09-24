@@ -26,6 +26,7 @@ public class Attendance {
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt = LocalDateTime.now();
     private Boolean easyDelete = false;
+    private String grossHours;
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.PRESENT;

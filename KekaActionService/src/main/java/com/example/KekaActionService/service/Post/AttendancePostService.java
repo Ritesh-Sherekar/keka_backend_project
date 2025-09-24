@@ -9,6 +9,9 @@ import com.example.KekaActionService.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 @Service
 public class AttendancePostService {
     @Autowired
@@ -50,11 +53,24 @@ public class AttendancePostService {
                 if (attendance.getCheckInTime().isBefore(dto.getCheckOutTime())){
                     attendance.setCheckOutTime(dto.getCheckOutTime());
                     attendance.setBadge(dto.getBadge());
+                    String grossHours = calculateGrossHours(attendance.getCheckInTime(), attendance.getCheckOutTime());
+                    attendance.setGrossHours(grossHours);
                     return attendanceRepo.save(attendance);
                 }
             }
         }
 
         throw new RuntimeException("Error");
+    }
+
+    private String calculateGrossHours(LocalDateTime checkInTime, LocalDateTime checkOutTime) {
+        if (checkInTime == null || checkOutTime == null){
+            return "0h 0m";
+        }
+        Duration duration = Duration.between(checkInTime, checkOutTime);
+        long hours = duration.toHours();
+        long minute = duration.toMinutes() % 60;
+
+        return hours + "h " + minute + "m";
     }
 }
