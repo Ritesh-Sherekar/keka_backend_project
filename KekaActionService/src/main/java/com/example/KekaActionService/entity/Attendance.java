@@ -19,7 +19,7 @@ public class Attendance {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employeeID", nullable = false)
+    @JoinColumn(name = "employeeID", nullable = false,referencedColumnName = "employeeID")
     private Employee employee;
     private LocalDate attendanceDate;
     private LocalDateTime checkInTime;
@@ -32,5 +32,12 @@ public class Attendance {
 
     public enum Status {
         PRESENT, ABSENT, LEAVE, HALF_DAY
+    }
+
+    @Enumerated(EnumType.STRING)
+    private Badge badge = Badge.OUT;
+
+    public enum Badge {
+        IN, OUT
     }
 }

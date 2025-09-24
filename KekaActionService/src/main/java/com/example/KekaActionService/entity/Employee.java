@@ -18,6 +18,7 @@ public class Employee {
     @SequenceGenerator(name = "emp_seq",allocationSize = 50,initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "emp_seq")
     private Long id;
+    @Column(unique = true)
     private Long employeeID;
     private String firstName;
     private String lastName;
