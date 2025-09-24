@@ -25,6 +25,7 @@ public class JwtUtil {
 
     private final SecretKey accessSecreteKey = Keys.hmacShaKeyFor("/nctxZrIDSnatbXRnVRaf1OO+LOAiduMDjfgYEsAXRQ=".getBytes());
     private final SecretKey refreshSecreteKey = Keys.hmacShaKeyFor("/mctxZrIDSnatbXRnVRaf1OO+LOAiduMDjfgYEsAXRQ=".getBytes());
+    private final SecretKey resetPasswordKey = Keys.hmacShaKeyFor("/lctxZrIDSnatbXRnVRaf1OO+LOAiduMDjfgYEsAXRQ=".getBytes());
 
     @Setter
     public String type = "";
@@ -69,13 +70,36 @@ public class JwtUtil {
                 .compact();
     }
 
+
+    public String generatePasswordResetToken(String userName) {
+
+        Users users = userRepo.findByUserName(userName).orElseThrow(() -> new RuntimeException("User not found"));
+        List<String> roles = users.getRoles().stream().map(role -> role.getRole()).toList();
+
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("iss", "Java App");
+        claims.put("role", roles);
+
+        return Jwts.builder()
+                .claims()
+                .add(claims)
+                .subject(userName)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 ))
+                .and()
+                .signWith(resetPasswordKey)
+                .compact();
+    }
+
     private Claims extractAllClaims(String token) {
 
         SecretKey secretKey;
         if ("access".equalsIgnoreCase(type)){
             secretKey = accessSecreteKey;
-        }else {
+        }else if ("refresh".equalsIgnoreCase(type)){
             secretKey = refreshSecreteKey;
+        }else {
+            secretKey = resetPasswordKey;
         }
 
         return Jwts

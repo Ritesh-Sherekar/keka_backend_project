@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -39,5 +40,21 @@ public class AuthController {
         log.info("/auth/refresh controller");
         JwtResponse jetResponse = authService.refreshToken(refreshToken);
         return new ResponseEntity<>(jetResponse, HttpStatus.OK);
+    }
+
+    @PostMapping("/forgot_password")
+    public ResponseEntity<String> forgotPassword(@RequestParam String userName){
+
+        log.info("/auth/forgot_password");
+        String message = authService.forgotPassword(userName);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @PostMapping("/reset_password")
+    public ResponseEntity<String> resetPassword(@RequestParam String passwordResetToken, @RequestParam String newPassword){
+
+        log.info("/auth/reset_password");
+        String message = authService.resetPassword(passwordResetToken, newPassword);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

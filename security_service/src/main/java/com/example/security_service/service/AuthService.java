@@ -1,6 +1,7 @@
 package com.example.security_service.service;
 
 import com.example.security_service.dto.EmployeeDto;
+import com.example.security_service.dto.PasswordResetDto;
 import com.example.security_service.dto.UserDto;
 import com.example.security_service.entity.Employee;
 import com.example.security_service.entity.Roles;
@@ -9,6 +10,7 @@ import com.example.security_service.exception.InvalidCredentialsException;
 import com.example.security_service.exception.InvalidRolesException;
 import com.example.security_service.exception.InvalidTokenException;
 import com.example.security_service.exception.UserAlreadyPresent;
+import com.example.security_service.feignclients.ActionServiceFeignClient;
 import com.example.security_service.model.LogIdPassword;
 import com.example.security_service.repository.RoleRepository;
 import com.example.security_service.repository.UserRepository;
@@ -17,9 +19,11 @@ import com.example.security_service.util.JwtUtil;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +34,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class AuthService {
+
+    @Autowired
+    private ActionServiceFeignClient actionServiceFeignClient;
 
     @Autowired
     private UserRepository userRepository;
@@ -107,5 +114,36 @@ public class AuthService {
         String accessToken = jwtUtil.generateJwtAccessToken(userId);
 
         return new JwtResponse(accessToken, refreshToken);
+    }
+
+    public String forgotPassword(String userName) {
+
+        Users user = userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("invalid user name"));
+        String email = user.getEmployee().getEmail();
+        jwtUtil.setType("reset");
+        String passwordResetToken = jwtUtil.generatePasswordResetToken(userName);
+
+        PasswordResetDto passwordResetDto = new PasswordResetDto();
+        passwordResetDto.setResetToken(passwordResetToken);
+        passwordResetDto.setEmail(email);
+        passwordResetDto.setUserName(userName);
+        ResponseEntity<String> stringResponseEntity = actionServiceFeignClient.sendResetPasswordMail(passwordResetDto);
+
+        return stringResponseEntity.getBody();
+    }
+
+    public String resetPassword(String passwordResetToken, String newPassword) {
+
+        jwtUtil.setType("reset");
+        boolean isValidResetToken = jwtUtil.validateToken(passwordResetToken);
+        String userName = jwtUtil.extractUsername(passwordResetToken);
+
+        if (isValidResetToken){
+            Users user = userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+            user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+            userRepository.save(user);
+        }
+        return "Password reset successfully";
     }
 }

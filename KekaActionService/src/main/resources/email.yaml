@@ -1,0 +1,20 @@
+mail:
+  imap:
+    host: imap.gmail.com
+    port: 993
+    user: abhishekghogare.java@gmail.com
+    password: ${APP_PASSWORD_JAVA}
+    protocol: imaps
+    ssl-enable: true
+
+  username: abhishekghogare.eidiko@gmail.com
+  password: ${APP_PASSWORD}
+  host: smtp.gmail.com
+  port: 587
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+          required: true
