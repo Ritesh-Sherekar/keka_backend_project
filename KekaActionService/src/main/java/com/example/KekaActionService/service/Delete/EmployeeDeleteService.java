@@ -17,7 +17,7 @@ public class EmployeeDeleteService {
         Employee employee = employeeRepo.findById(id).orElseThrow(() -> new RuntimeException("Not Found"));
 
         if (employee != null){
-            employee.setEasyDelete(true);
+            employee.setIsDelete(true);
             return employeeRepo.save(employee);
         }
         throw new RuntimeException("Not Found");

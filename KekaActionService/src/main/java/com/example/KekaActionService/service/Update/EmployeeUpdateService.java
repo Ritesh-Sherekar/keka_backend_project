@@ -31,7 +31,7 @@ public class EmployeeUpdateService {
                     case "department" : employee.setDepartment((String) value); break;
                     case "joinDate" : employee.setJoinDate((LocalDate) value); break;
                     case "active" : employee.setActive((Boolean) value); break;
-                    case "easyDelete" : employee.setEasyDelete((Boolean) value); break;
+                    case "easyDelete" : employee.setIsDelete((Boolean) value); break;
                 }
             });
             employee.setUpdatedAt(LocalDateTime.now());

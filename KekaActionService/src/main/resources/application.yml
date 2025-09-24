@@ -5,12 +5,13 @@ spring:
   application:
     name: KekeActionService
   datasource:
-    username: keka_clone
+    username: keka
     password: sarasu10
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@192.168.3.30:1521:xe
+    url: jdbc:oracle:thin:@localhost:1522:xe
+
   mail:
-    username: abhishekghogare.eidiko@gmail.com
+    username: ${EMAIL}
     password: ${APP_PASSWORD}
     host: smtp.gmail.com
     port: 587
@@ -28,7 +29,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
