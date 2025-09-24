@@ -46,14 +46,8 @@ public class AttendancePostService {
         Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow();
 
         if (attendance.getEmployee().getEmployeeID().equals(dto.getEmployeeID())){
-            System.out.println("In First if");
             if (attendance.getCheckInTime() != null && attendance.getBadge() == Attendance.Badge.IN){
-                System.out.println("In Second if");
-
-                System.out.println(attendance.getCheckInTime());
-                System.out.println(dto.getCheckOutTime());
                 if (attendance.getCheckInTime().isBefore(dto.getCheckOutTime())){
-                    System.out.println("In Third if");
                     attendance.setCheckOutTime(dto.getCheckOutTime());
                     attendance.setBadge(dto.getBadge());
                     return attendanceRepo.save(attendance);
