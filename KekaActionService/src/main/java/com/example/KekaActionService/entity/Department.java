@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Department {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long departmentId;
 
     private String departmentName;
 
-    @OneToOne(mappedBy = "employeeId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager", referencedColumnName = "employeeID", nullable = true)
     private Employee manager;
 
 }
