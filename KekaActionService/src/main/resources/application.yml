@@ -7,8 +7,8 @@ spring:
   datasource:
     username: ${ORACLE_DB_USER}
     password: ${ORACLE_DB_PASSWORD}
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:xe
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: ${ORACLE_DB_URL}
 
   mail:
     username: ${EMAIL}
@@ -32,5 +32,5 @@ eureka:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
