@@ -1,5 +1,6 @@
 package com.example.KekaActionService.entity;
 
+import com.example.KekaActionService.enums.Bands;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,16 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Department {
+public class Band {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long departmentId;
+    private Long bandId;
 
-    private String departmentName;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee manager;
-
+    @Enumerated(EnumType.STRING)
+    private Bands bands;
+    private int leaves;
 }
