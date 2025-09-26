@@ -17,5 +17,4 @@ public class AttendanceResponseDto {
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt;
-    private Attendance.Status status ;
 }

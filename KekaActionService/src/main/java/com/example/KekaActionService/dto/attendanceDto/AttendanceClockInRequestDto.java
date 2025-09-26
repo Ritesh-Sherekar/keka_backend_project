@@ -16,6 +16,4 @@ public class AttendanceClockInRequestDto {
     private LocalDate attendanceDate;
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
-    private Attendance.Status status;
-    private Attendance.Badge badge;
 }

@@ -14,5 +14,4 @@ public class AttendanceClockOutRequestDto {
     private Long id;
     private Long employeeID;
     private LocalDateTime checkOutTime;
-    private Attendance.Badge badge;
 }

@@ -10,11 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Department {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long departmentId;
-
     private String departmentName;
 
     @ManyToOne(fetch = FetchType.LAZY)
