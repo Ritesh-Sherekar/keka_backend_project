@@ -1,4 +1,4 @@
-package com.example.KekaActionService.entity;
+package com.example.security_service.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,12 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Department {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long departmentId;
+
     private String departmentName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager", referencedColumnName = "employeeID", nullable = true)
     private Employee manager;
+
 }

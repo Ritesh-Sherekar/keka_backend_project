@@ -30,7 +30,7 @@ public class AttendancePostService {
 
     // Clock In API
     public Attendance clockIn(AttendanceClockInRequestDto dto) {
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(dto.getEmployeeID()));
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new RuntimeException("Employee does not exists"));
 
         if (byEmployeeID != null) {
             Attendance attendance = new Attendance();
@@ -48,7 +48,7 @@ public class AttendancePostService {
 
     // Clock Out API
     public Attendance clockOut(AttendanceClockOutRequestDto dto){
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(dto.getEmployeeID()));
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new RuntimeException("Employee does not exists"));
 
         Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow();
 

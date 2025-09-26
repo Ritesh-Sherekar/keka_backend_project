@@ -2,6 +2,7 @@ package com.example.KekaActionService.service.Update;
 
 import com.example.KekaActionService.entity.Department;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.repository.DepartmentRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class DepartmentUpdateService {
     public Department updateManagerByDeptId(int deptId, int managerId){
         Department department = departmentRepo.findById((long) deptId).orElseThrow(() -> new RuntimeException("Not Found"));
 
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(managerId);
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(managerId).orElseThrow(() -> new EmployeeIdNotFoundException("Employee doesnt exists"));
         if (department != null){
             department.setManager(byEmployeeID);
             return departmentRepo.save(department);
