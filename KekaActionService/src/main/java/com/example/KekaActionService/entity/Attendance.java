@@ -12,10 +12,16 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(
+        name = "EMPLOYEE",
+        indexes = {
+                @Index(name = "idx_employee_employeeID", columnList = "employeeID")
+        }
+)
 public class Attendance {
     @Id
-   // @SequenceGenerator(name = "atte_seq",allocationSize = 50,initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "atte_seq",allocationSize = 50,initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atte_seq")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,6 +45,6 @@ public class Attendance {
     private Badge badge = Badge.OUT;
 
     public enum Badge {
-        IN, OUT, Regularized
+        IN, OUT, REGULARIZED
     }
 }

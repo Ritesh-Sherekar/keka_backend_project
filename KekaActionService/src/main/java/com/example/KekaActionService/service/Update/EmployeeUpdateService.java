@@ -52,8 +52,7 @@ public class EmployeeUpdateService {
                 }
             });
             employee.setUpdatedAt(LocalDateTime.now());
-            Employee save = employeeRepo.save(employee);
-            return save;
+            return employeeRepo.save(employee);
         }
         throw new RuntimeException("Not Found");
     }
