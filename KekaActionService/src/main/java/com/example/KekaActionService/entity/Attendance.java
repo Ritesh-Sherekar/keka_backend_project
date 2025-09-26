@@ -45,6 +45,6 @@ public class Attendance {
     private Badge badge = Badge.OUT;
 
     public enum Badge {
-        IN, OUT, Regularized
+        IN, OUT, REGULARIZED
     }
 }

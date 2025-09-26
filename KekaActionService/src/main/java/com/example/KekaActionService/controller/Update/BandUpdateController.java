@@ -1,10 +1,9 @@
-package com.example.KekaActionService.controller;
+package com.example.KekaActionService.controller.Update;
 
 import com.example.KekaActionService.dto.BandDto;
 import com.example.KekaActionService.entity.Band;
 import com.example.KekaActionService.service.Update.BandUpdateService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
