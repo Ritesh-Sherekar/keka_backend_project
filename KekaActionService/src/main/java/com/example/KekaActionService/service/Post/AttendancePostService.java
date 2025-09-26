@@ -1,10 +1,12 @@
 package com.example.KekaActionService.service.Post;
 
-import com.example.KekaActionService.dto.AttendanceClockInRequestDto;
-import com.example.KekaActionService.dto.AttendanceClockOutRequestDto;
-import com.example.KekaActionService.dto.AttendanceRegularizationRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceClockInRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceClockOutRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceRegularizationRequestDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.enums.Badge;
+import com.example.KekaActionService.enums.Status;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.repository.AttendanceRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
@@ -36,8 +38,8 @@ public class AttendancePostService {
             attendance.setAttendanceDate(dto.getAttendanceDate());
             attendance.setCheckInTime(dto.getCheckInTime());
             attendance.setCheckOutTime(dto.getCheckOutTime());
-            attendance.setStatus(dto.getStatus());
-            attendance.setBadge(dto.getBadge());
+            attendance.setStatus(Status.PRESENT);
+            attendance.setBadge(Badge.IN);
 
             return attendanceRepo.save(attendance);
         }
@@ -51,10 +53,10 @@ public class AttendancePostService {
         Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow();
 
         if (attendance.getEmployee().getEmployeeID().equals(dto.getEmployeeID())){
-            if (attendance.getCheckInTime() != null && attendance.getBadge() == Attendance.Badge.IN){
+            if (attendance.getCheckInTime() != null && attendance.getBadge() == Badge.IN){
                 if (attendance.getCheckInTime().isBefore(dto.getCheckOutTime())){
                     attendance.setCheckOutTime(dto.getCheckOutTime());
-                    attendance.setBadge(dto.getBadge());
+                    attendance.setBadge(Badge.OUT);
                     String grossHours = calculateGrossHours(attendance.getCheckInTime(), attendance.getCheckOutTime());
                     attendance.setGrossHours(grossHours);
                     return attendanceRepo.save(attendance);
@@ -84,7 +86,7 @@ public class AttendancePostService {
                 .filter(attendance -> attendance.getAttendanceDate().isEqual(dto.getAttendanceDate()))
                 .map(attendance -> {
                     attendance.setGrossHours(null);
-                    attendance.setBadge(Attendance.Badge.Regularized);
+                    attendance.setBadge(Badge.REGULARIZED);
                     return attendanceRepo.save(attendance);
                 }).toList();
 

@@ -1,5 +1,7 @@
 package com.example.KekaActionService.entity;
 
+import com.example.KekaActionService.enums.Badge;
+import com.example.KekaActionService.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Attendance {
     @Id
-   // @SequenceGenerator(name = "atte_seq",allocationSize = 50,initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
@@ -29,16 +30,9 @@ public class Attendance {
     private String grossHours;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.PRESENT;
-
-    public enum Status {
-        PRESENT, ABSENT, LEAVE, HALF_DAY
-    }
+    private Status status;
 
     @Enumerated(EnumType.STRING)
-    private Badge badge = Badge.OUT;
+    private Badge badge;
 
-    public enum Badge {
-        IN, OUT, Regularized
-    }
 }

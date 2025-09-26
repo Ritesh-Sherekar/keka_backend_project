@@ -1,15 +1,15 @@
 package com.example.KekaActionService.dto;
 
+import com.example.KekaActionService.enums.Bands;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AttendanceRegularizationRequestDto {
-    private Long employeeID;
-    private LocalDate attendanceDate;
+public class BandDto {
+
+    private Bands bands;
+    private int leaves;
 }

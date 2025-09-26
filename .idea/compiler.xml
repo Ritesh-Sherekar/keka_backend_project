@@ -3,6 +3,13 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka_service" />
+      </profile>
+      <profile name="Annotation profile for KekaActionService" enabled="true">
       <profile name="Annotation profile for query_service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -20,6 +27,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="KekaActionService" options="-parameters" />
       <module name="query_service" options="-parameters" />
+      <module name="eureka_service" options="-parameters" />
       <module name="security_service" options="-parameters" />
     </option>
   </component>

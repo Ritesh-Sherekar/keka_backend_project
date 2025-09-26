@@ -1,9 +1,6 @@
-package com.example.KekaActionService.dto;
+package com.example.KekaActionService.dto.attendanceDto;
 
 import com.example.KekaActionService.entity.Attendance;
-import com.example.KekaActionService.entity.Employee;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +17,4 @@ public class AttendanceResponseDto {
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt;
-    private Attendance.Status status ;
 }

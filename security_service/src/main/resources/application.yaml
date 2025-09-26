@@ -4,10 +4,10 @@ server:
 spring:
 
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:xe
     username: ${ORACLE_DB_USER}
     password: ${ORACLE_DB_PASSWORD}
     driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: ${ORACLE_DB_URL}
 
   jpa:
     hibernate:
@@ -20,9 +20,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 
-logging:
-  file:
-    name: logs/app.log
+#logging:
+#  file:
+#    name: logs/app.log
 
   level:
     org:
