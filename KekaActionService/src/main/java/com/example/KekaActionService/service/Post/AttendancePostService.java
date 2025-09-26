@@ -1,8 +1,8 @@
 package com.example.KekaActionService.service.Post;
 
-import com.example.KekaActionService.dto.AttendanceClockInRequestDto;
-import com.example.KekaActionService.dto.AttendanceClockOutRequestDto;
-import com.example.KekaActionService.dto.AttendanceRegularizationRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceClockInRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceClockOutRequestDto;
+import com.example.KekaActionService.dto.attendanceDto.AttendanceRegularizationRequestDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;

@@ -1,4 +1,4 @@
-package com.example.KekaActionService.dto;
+package com.example.KekaActionService.dto.attendanceDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

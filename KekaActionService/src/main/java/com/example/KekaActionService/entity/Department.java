@@ -17,8 +17,8 @@ public class Department {
 
     private String departmentName;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager", referencedColumnName = "employeeID", nullable = true)
     private Employee manager;
 
 }

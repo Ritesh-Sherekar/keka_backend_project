@@ -7,8 +7,8 @@ spring:
   datasource:
     username: ${ORACLE_DB_USER}
     password: ${ORACLE_DB_PASSWORD}
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:xe
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: ${ORACLE_DB_URL}
 
 
   jpa:
@@ -35,3 +35,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
