@@ -13,7 +13,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none #update
+      ddl-auto: create #update
     show-sql: true
 
   mail:
@@ -35,8 +35,3 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true

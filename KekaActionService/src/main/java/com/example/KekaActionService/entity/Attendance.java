@@ -1,5 +1,7 @@
 package com.example.KekaActionService.entity;
 
+import com.example.KekaActionService.enums.Badge;
+import com.example.KekaActionService.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,16 +14,9 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(
-        name = "EMPLOYEE",
-        indexes = {
-                @Index(name = "idx_employee_employeeID", columnList = "employeeID")
-        }
-)
 public class Attendance {
     @Id
-    @SequenceGenerator(name = "atte_seq",allocationSize = 50,initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atte_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,16 +30,9 @@ public class Attendance {
     private String grossHours;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.PRESENT;
-
-    public enum Status {
-        PRESENT, ABSENT, LEAVE, HALF_DAY
-    }
+    private Status status;
 
     @Enumerated(EnumType.STRING)
-    private Badge badge = Badge.OUT;
+    private Badge badge;
 
-    public enum Badge {
-        IN, OUT, REGULARIZED
-    }
 }

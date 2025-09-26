@@ -15,8 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Employee {
     @Id
-    @SequenceGenerator(name = "emp_seq",allocationSize = 50,initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "emp_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(unique = true)
     private Long employeeID;
