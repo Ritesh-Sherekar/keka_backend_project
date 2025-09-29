@@ -18,10 +18,9 @@ public class EmployeeDto {
     private String email;
     private String phone;
     private String designation;
-    private String department;
     private LocalDate joinDate;
     private Boolean active = true;
-    private Boolean easyDelete = false;
+    private Boolean isDeleted = false;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
