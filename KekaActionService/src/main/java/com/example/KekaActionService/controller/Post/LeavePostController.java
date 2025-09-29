@@ -29,6 +29,8 @@ public class LeavePostController {
         log.info("Leave saved: {}", leave);
 
         LeaveDto addedLeave = objectMapper.convertValue(leave, LeaveDto.class);
+        addedLeave.setEmployeeID(leave.getEmployee().getEmployeeID());
+        addedLeave.setApproverID(leave.getApprover().getEmployeeID());
         log.info("Added Leave DTO: {}", addedLeave);
 
         return new ResponseEntity<>(addedLeave, HttpStatus.OK);

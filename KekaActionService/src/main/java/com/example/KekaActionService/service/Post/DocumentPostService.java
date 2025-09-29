@@ -24,7 +24,7 @@ public class DocumentPostService {
 
     // Submit Documents
     public DocumentsSubmitResponseDto submitDocuments(int empID, String typeOfDoc, String subTypeOfDoc, MultipartFile doc) throws IOException {
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(empID));
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(empID)).orElseThrow(() -> new EmployeeIdNotFoundException("Invalid employee id"));
 
         if (byEmployeeID == null){
             throw new EmployeeIdNotFoundException("Id Not Found");
