@@ -13,7 +13,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none #create #update
+      ddl-auto: create #create #update
     show-sql: true
 
   mail:
