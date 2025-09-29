@@ -13,20 +13,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Attendance {
+
     @Id
-    // @SequenceGenerator(name = "atte_seq",allocationSize = 50,initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Long attendanceId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employeeID", nullable = false,referencedColumnName = "employeeID")
+    @JoinColumn(name = "employeeId", nullable = false,referencedColumnName = "employeeId")
     private Employee employee;
     private LocalDate attendanceDate;
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt = LocalDateTime.now();
     private Boolean isDelete = false;
-    private String grossHours;
+    private String grossHour;
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.PRESENT;
@@ -41,4 +41,5 @@ public class Attendance {
     public enum Badge {
         IN, OUT, Regularized
     }
+
 }

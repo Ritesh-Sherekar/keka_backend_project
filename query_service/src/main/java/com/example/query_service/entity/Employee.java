@@ -1,5 +1,6 @@
 package com.example.query_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,21 +15,26 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
+
     @Id
-    @SequenceGenerator(name = "emp_seq",allocationSize = 50,initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "emp_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @Column(unique = true)
-    private Long employeeID;
+    private Long employeeId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private String designation;
-    private String department;
     private LocalDate joinDate;
     private Boolean active = true;
     private Boolean isDelete = false;
+
+    @ManyToOne
+    @JsonBackReference
+    private Department department;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -43,4 +49,5 @@ public class Employee {
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
+
 }

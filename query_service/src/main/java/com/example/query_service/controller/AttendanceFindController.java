@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/attendance")
 public class AttendanceFindController {
+
     @Autowired
     private AttendanceFindService attendanceFindService;
-    @GetMapping("/findByEmployeeId/{employeeID}")
-    public ResponseEntity<List<Attendance>> findByEmployee_EmployeeID(@PathVariable Long employeeID){
-        List<Attendance> attendance = attendanceFindService.findByEmployee_EmployeeID(employeeID);
+
+    @GetMapping("/findAttendanceByEmployeeId/{employeeId}")
+    public ResponseEntity<List<Attendance>> findAttendanceByEmployeeId(@PathVariable Long employeeId){
+        List<Attendance> attendance = attendanceFindService.findAttendanceByEmployeeId(employeeId);
         return new ResponseEntity<>(attendance, HttpStatus.OK);
     }
+
 }

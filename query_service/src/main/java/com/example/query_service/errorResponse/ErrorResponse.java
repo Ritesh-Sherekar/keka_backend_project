@@ -9,9 +9,11 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorResponses {
+public class ErrorResponse {
+
     private String message;
-    private String details;
+    private String detail;
     private LocalDateTime localDateTime;
     private String status;
+
 }
