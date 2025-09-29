@@ -28,7 +28,21 @@ public class GlobalExceptionHandler {
     // Document ID Not Found
     @ExceptionHandler(DocumentIDNotFoundException.class)
     public ResponseEntity<ErrorResponses> documentIDNotFound(DocumentIDNotFoundException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Document Not Present", LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.toString());
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Document Not Present", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
+    }
+
+    // Shift Not Present
+    @ExceptionHandler(ShiftNotPresentException.class)
+    public ResponseEntity<ErrorResponses> shiftNotPresent(ShiftNotPresentException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Shift Not Present", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
+    }
+
+    // Shift Assign To Employee
+    @ExceptionHandler(ShiftAssignToEmployeeException.class)
+    public ResponseEntity<ErrorResponses> shiftAssignToEmployee(ShiftAssignToEmployeeException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Shift assign to employee", LocalDateTime.now(), HttpStatus.CONFLICT.toString());
+        return new ResponseEntity<>(responses, HttpStatus.CONFLICT);
     }
 }
