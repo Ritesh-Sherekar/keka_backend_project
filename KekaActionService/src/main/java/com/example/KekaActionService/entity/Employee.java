@@ -1,5 +1,6 @@
 package com.example.KekaActionService.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Employee {
     private Boolean isDelete = false;
 
     @ManyToOne
+    @JsonManagedReference
     private Department department;
 
     private LocalDateTime createdAt;
