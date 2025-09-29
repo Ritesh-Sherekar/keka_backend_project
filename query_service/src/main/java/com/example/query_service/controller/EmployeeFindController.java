@@ -13,19 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employee")
 public class EmployeeFindController {
+
     @Autowired
     private EmployeeFindService employeeFindService;
 
-    @GetMapping("/findAll")
-    public ResponseEntity<List<Employee>> findEmployee(){
-        List<Employee> employee = employeeFindService.findEmployee();
+    @GetMapping("/findAllEmployee")
+    public ResponseEntity<List<Employee>> findAllEmployee(){
+        List<Employee> employee = employeeFindService.findAllEmployee();
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
-    @GetMapping("/findByEmployeeId/{id}")
-    public ResponseEntity<Employee> findByEmployeeID(@PathVariable int id){
-        Employee employee = employeeFindService.findByEmployeeID(id);
+
+    @GetMapping("/findEmployeeByEmployeeId/{employeeId}")
+    public ResponseEntity<Employee> findEmployeeByEmployeeId(@PathVariable Long employeeId){
+        Employee employee = employeeFindService.findEmployeeByEmployeeId(employeeId);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
+
+    @GetMapping("/findEmployeeByDepartmentName/{departmentName}")
+    public ResponseEntity<List<Employee>> findEmployeeByDepartmentName(@PathVariable String departmentName){
+        List<Employee> employee = employeeFindService.findEmployeeByDepartmentName(departmentName);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
 }
