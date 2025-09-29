@@ -36,6 +36,10 @@ public class Employee {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shiftID")
+    private Shift shift;
+
     // --- JPA Callbacks for timestamps ---
     @PrePersist
     protected void onCreate() {
