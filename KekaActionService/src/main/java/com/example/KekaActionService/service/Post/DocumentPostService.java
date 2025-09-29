@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -24,9 +25,10 @@ public class DocumentPostService {
 
     // Submit Documents
     public DocumentsSubmitResponseDto submitDocuments(int empID, String typeOfDoc, String subTypeOfDoc, MultipartFile doc) throws IOException {
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(empID)).orElseThrow(() -> new EmployeeIdNotFoundException("Invalid employee id"));
 
-        if (byEmployeeID == null){
+        Optional<Employee> byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(empID));
+
+        if (byEmployeeID.isEmpty()){
             throw new EmployeeIdNotFoundException("Id Not Found");
         }
 
@@ -37,7 +39,7 @@ public class DocumentPostService {
         }
 
         Document document = new Document();
-        document.setEmployeeID(byEmployeeID);
+        document.setEmployeeID(byEmployeeID.get());
         document.setTypeOfDoc(typeOfDoc);
         document.setSubTypeDoc(subTypeOfDoc);
         document.setFileName(doc.getOriginalFilename());
@@ -47,7 +49,7 @@ public class DocumentPostService {
         documentRepo.save(document);
 
         DocumentsSubmitResponseDto responseDto = new DocumentsSubmitResponseDto();
-        responseDto.setEmployeeID(byEmployeeID.getEmployeeID());
+        responseDto.setEmployeeID(byEmployeeID.get().getEmployeeID());
         responseDto.setMessage("Document Submitted Successfully!");
         responseDto.setDocId(document.getDocId());
         return responseDto;
