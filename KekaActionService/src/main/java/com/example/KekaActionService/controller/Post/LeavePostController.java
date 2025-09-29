@@ -21,12 +21,10 @@ public class LeavePostController {
     @Autowired
     private ObjectMapper objectMapper;
 
-    /**
-     * Add a new leave record
-     */
     @PostMapping("/")
     public ResponseEntity<LeaveDto> postLeave(@RequestBody LeaveDto leaveDto) {
         log.info("In LeavePostController - Adding Leave");
+        log.info("leavedto : {}", leaveDto);
         Leave leave = leavePostService.addLeave(leaveDto);
         log.info("Leave saved: {}", leave);
 
