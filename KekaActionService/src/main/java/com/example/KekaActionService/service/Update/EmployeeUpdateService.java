@@ -3,6 +3,8 @@ package com.example.KekaActionService.service.Update;
 import com.example.KekaActionService.entity.Department;
 import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.entity.Shift;
+import com.example.KekaActionService.exception.DepartmentNotFoundException;
+import com.example.KekaActionService.exception.ShiftNotPresentException;
 import com.example.KekaActionService.repository.DepartmentRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import com.example.KekaActionService.repository.ShiftRepo;
@@ -31,8 +33,6 @@ public class EmployeeUpdateService {
 
     // Update employee details
     public Employee updateEmployee(long empId , Map<String, Object> updates){
-        //Employee employee = employeeRepo.findByEmployeeID(empId).orElseThrow(() -> new RuntimeException("Not Found"));
-
         Optional<Employee> byEmployeeID = employeeRepo.findByEmployeeID(empId);
         Employee employee = byEmployeeID.get();
 
@@ -40,13 +40,13 @@ public class EmployeeUpdateService {
         Shift shift;
 
         if (updates.containsKey("department")){
-            department = departmentRepo.findByDepartmentName((String) updates.get("department")).orElseThrow(() -> new RuntimeException("Department not found"));
+            department = departmentRepo.findByDepartmentName((String) updates.get("department")).orElseThrow(() -> new DepartmentNotFoundException("Department not found"));
         } else {
             department = null;
         }
 
         if (updates.containsKey("shift")) {
-            shift =  shiftRepo.findById((Integer) updates.get("shift")).orElseThrow(()-> new RuntimeException("Shift Not Found"));
+            shift =  shiftRepo.findById((Integer) updates.get("shift")).orElseThrow(()-> new ShiftNotPresentException("Shift Not Found"));
         } else {
             shift = null;
         }
@@ -78,7 +78,7 @@ public class EmployeeUpdateService {
                     employee.setActive((Boolean) value);
                     break;
                 case "easyDelete":
-                    employee.setIsDelete((Boolean) value);
+                    employee.setIsDeleted((Boolean) value);
                     break;
                 case "shift":
                     employee.setShift(shift);

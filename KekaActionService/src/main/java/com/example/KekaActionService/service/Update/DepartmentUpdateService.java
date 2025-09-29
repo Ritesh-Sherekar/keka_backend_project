@@ -2,6 +2,7 @@ package com.example.KekaActionService.service.Update;
 
 import com.example.KekaActionService.entity.Department;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.exception.DepartmentNotFoundException;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.repository.DepartmentRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
@@ -20,13 +21,11 @@ public class DepartmentUpdateService {
 
     // Update Manager By DeptID
     public Department updateManagerByDeptId(int deptId, int managerId){
-        Department department = departmentRepo.findById((long) deptId).orElseThrow(() -> new RuntimeException("Not Found"));
+        Department department = departmentRepo.findById((long) deptId).orElseThrow(() -> new DepartmentNotFoundException("Department Not Found"));
 
         Employee byEmployeeID = employeeRepo.findByEmployeeID(managerId).orElseThrow(() -> new EmployeeIdNotFoundException("Employee doesnt exists"));
-        if (department != null){
-            department.setManager(byEmployeeID);
-            return departmentRepo.save(department);
-        }
-         throw new RuntimeException("Not Found");
+
+        department.setManager(byEmployeeID);
+        return departmentRepo.save(department);
     }
 }
