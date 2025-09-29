@@ -22,7 +22,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ContentTypeNotValidException.class)
     public ResponseEntity<ErrorResponses> contentTypeNotValid(ContentTypeNotValidException ex){
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "This content type not acceptable", LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.toString());
-        System.out.println(responses);
         return new ResponseEntity<>(responses, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    // Document ID Not Found
+    @ExceptionHandler(DocumentIDNotFoundException.class)
+    public ResponseEntity<ErrorResponses> documentIDNotFound(DocumentIDNotFoundException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Document Not Present", LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
 }

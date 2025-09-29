@@ -1,6 +1,5 @@
 package com.example.KekaActionService.repository;
 
-import com.example.KekaActionService.dto.BandDto;
 import com.example.KekaActionService.entity.Band;
 import com.example.KekaActionService.enums.Bands;
 import org.springframework.data.jpa.repository.JpaRepository;
