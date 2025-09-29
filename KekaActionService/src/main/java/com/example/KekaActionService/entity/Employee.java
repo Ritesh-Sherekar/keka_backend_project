@@ -1,10 +1,12 @@
 package com.example.KekaActionService.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"department"})
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -27,10 +30,10 @@ public class Employee {
     private String designation;
     private LocalDate joinDate;
     private Boolean active = true;
-    private Boolean isDelete = false;
+    private Boolean isDeleted = false;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Department department;
 
     private LocalDateTime createdAt;

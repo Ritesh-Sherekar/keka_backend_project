@@ -1,9 +1,11 @@
 package com.example.security_service.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,25 +15,30 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"department"})
 public class Employee {
     @Id
-    @SequenceGenerator(name = "emp_seq",allocationSize = 50,initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "emp_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(unique = true)
     private Long employeeID;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private String designation;
-    private String department;
     private LocalDate joinDate;
     private Boolean active = true;
     private Boolean isDeleted = false;
+
+    @ManyToOne
+    @JsonBackReference
+    private Department department;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-
+    // --- JPA Callbacks for timestamps ---
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
