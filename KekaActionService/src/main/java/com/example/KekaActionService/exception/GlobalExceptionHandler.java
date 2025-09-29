@@ -45,4 +45,12 @@ public class GlobalExceptionHandler {
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Shift assign to employee", LocalDateTime.now(), HttpStatus.CONFLICT.toString());
         return new ResponseEntity<>(responses, HttpStatus.CONFLICT);
     }
+
+    // Department Not Found
+    @ExceptionHandler(DepartmentNotFoundException.class)
+    public ResponseEntity<ErrorResponses> departmentNotFound(DepartmentNotFoundException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Department Not Found", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
+    }
 }
+

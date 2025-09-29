@@ -44,7 +44,7 @@ public class DepartmentPostService {
             department.setDepartmentName(requestDto.getDepartmentName());
 
             if (requestDto.getEmployeeID() != null){
-                Employee manager = employeeRepo.findByEmployeeID(requestDto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee doesnt exists"));
+                Employee manager = employeeRepo.findByEmployeeID(requestDto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
                 department.setManager(manager);
             }else {
                 department.setManager(null);
