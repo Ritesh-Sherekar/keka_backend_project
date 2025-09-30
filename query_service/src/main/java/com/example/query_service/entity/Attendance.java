@@ -1,5 +1,8 @@
 package com.example.query_service.entity;
 
+import com.example.query_service.entity.Employee;
+import com.example.query_service.enums.Badge;
+import com.example.query_service.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,33 +16,24 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Attendance {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long attendanceId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employeeId", nullable = false,referencedColumnName = "employeeId")
+    @JoinColumn(name = "employeeID", nullable = false,referencedColumnName = "employeeID")
     private Employee employee;
     private LocalDate attendanceDate;
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
     private LocalDateTime createdAt = LocalDateTime.now();
     private Boolean isDelete = false;
-    private String grossHour;
+    private String grossHours;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.PRESENT;
-
-    public enum Status {
-        PRESENT, ABSENT, LEAVE, HALF_DAY
-    }
+    private Status status;
 
     @Enumerated(EnumType.STRING)
-    private Badge badge = Badge.OUT;
-
-    public enum Badge {
-        IN, OUT, Regularized
-    }
+    private Badge badge;
 
 }
