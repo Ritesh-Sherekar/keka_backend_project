@@ -28,7 +28,11 @@ public class BandPostService {
 
         Band bandToSave = new Band();
         bandToSave.setBands(bandDto.getBands());
-        bandToSave.setLeaves(bandDto.getLeaves());
+        bandToSave.setParentalLeaves(bandDto.getParentalLeaves());
+        bandToSave.setCasualLeaves(bandDto.getCasualLeaves());
+        bandToSave.setPaidLeaves(bandDto.getPaidLeaves());
+        bandToSave.setSickLeaves(bandDto.getSickLeaves());
+        bandToSave.setUnpaidLeaves(365);
 
         Band savedBand = bandRepo.save(bandToSave);
 

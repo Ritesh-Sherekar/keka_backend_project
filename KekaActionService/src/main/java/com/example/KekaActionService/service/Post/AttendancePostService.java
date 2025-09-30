@@ -8,19 +8,26 @@ import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.enums.Badge;
 import com.example.KekaActionService.enums.Status;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
+import com.example.KekaActionService.exception.NoAttendanceOnThisDayException;
 import com.example.KekaActionService.repository.AttendanceRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
+import com.example.KekaActionService.response.EmailRegularizationTemplate;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AttendancePostService {
     @Autowired
     private EmployeeRepo employeeRepo;
+
+    @Autowired
+    private EmailPostService emailPostService;
 
     private final AttendanceRepo attendanceRepo;
 
@@ -30,7 +37,7 @@ public class AttendancePostService {
 
     // Clock In API
     public Attendance clockIn(AttendanceClockInRequestDto dto) {
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(dto.getEmployeeID()));
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
 
         if (byEmployeeID != null) {
             Attendance attendance = new Attendance();
@@ -48,7 +55,7 @@ public class AttendancePostService {
 
     // Clock Out API
     public Attendance clockOut(AttendanceClockOutRequestDto dto){
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(Math.toIntExact(dto.getEmployeeID()));
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
 
         Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow();
 
@@ -79,8 +86,15 @@ public class AttendancePostService {
     }
 
     // Regularization Api
-    public List<Attendance> regularizationApi(AttendanceRegularizationRequestDto dto){
+    public Attendance regularizationApi(AttendanceRegularizationRequestDto dto) {
         List<Attendance> attendances = attendanceRepo.findByEmployee_EmployeeID(dto.getEmployeeID());
+
+        boolean b = attendances.stream()
+                .anyMatch(attendance -> attendance.getAttendanceDate().isEqual(dto.getAttendanceDate()));
+
+        if (!b) {
+            throw new NoAttendanceOnThisDayException("Attendance Not Present On This Day");
+        }
 
         List<Attendance> updatedAttendances = attendances.stream()
                 .filter(attendance -> attendance.getAttendanceDate().isEqual(dto.getAttendanceDate()))
@@ -90,6 +104,20 @@ public class AttendancePostService {
                     return attendanceRepo.save(attendance);
                 }).toList();
 
-        return updatedAttendances;
-    }
+        if (!updatedAttendances.isEmpty()) {
+            employeeRepo.findByEmployeeID(dto.getEmployeeID())
+                .ifPresent(emp -> {
+                    Attendance updated = updatedAttendances.getFirst();
+                    try {
+                        emailPostService.sendRegularizedMail(emp, updated);
+                    } catch (MessagingException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+        }
+
+        return updatedAttendances.getFirst();
+        }
+
 }
+

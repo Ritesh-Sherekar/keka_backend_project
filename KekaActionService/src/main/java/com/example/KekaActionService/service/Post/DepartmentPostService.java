@@ -3,6 +3,7 @@ package com.example.KekaActionService.service.Post;
 import com.example.KekaActionService.dto.departmentDto.DepartmentRequestDto;
 import com.example.KekaActionService.entity.Department;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.repository.DepartmentRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class DepartmentPostService {
 
         if (departmentDto.getEmployeeID() != null) {
             // Only set manager if employeeID is provided
-            Employee manager = employeeRepo.findByEmployeeID(Math.toIntExact(departmentDto.getEmployeeID()));
+            Employee manager = employeeRepo.findByEmployeeID(departmentDto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee doesnt exists"));
             department.setManager(manager);
         } else {
             department.setManager(null);
@@ -43,7 +44,7 @@ public class DepartmentPostService {
             department.setDepartmentName(requestDto.getDepartmentName());
 
             if (requestDto.getEmployeeID() != null){
-                Employee manager = employeeRepo.findByEmployeeID(Math.toIntExact(requestDto.getEmployeeID()));
+                Employee manager = employeeRepo.findByEmployeeID(requestDto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
                 department.setManager(manager);
             }else {
                 department.setManager(null);

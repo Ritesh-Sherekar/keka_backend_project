@@ -5,6 +5,7 @@ import com.example.KekaActionService.dto.attendanceDto.AttendanceClockOutRequest
 import com.example.KekaActionService.dto.attendanceDto.AttendanceRegularizationRequestDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.service.Post.AttendancePostService;
+import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,8 @@ public class AttendancePostController {
 
     // Regularization Api
     @PostMapping("/regularization")
-    public ResponseEntity<List<Attendance>> regularizationApi(@RequestBody AttendanceRegularizationRequestDto dto){
-        List<Attendance> attendances = attendancePostService.regularizationApi(dto);
-        return new ResponseEntity<>(attendances, HttpStatus.OK);
+    public ResponseEntity<Attendance> regularizationApi(@RequestBody AttendanceRegularizationRequestDto dto) throws MessagingException {
+        Attendance attendance = attendancePostService.regularizationApi(dto);
+        return new ResponseEntity<>(attendance, HttpStatus.OK);
     }
 }
