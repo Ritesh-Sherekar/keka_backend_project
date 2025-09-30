@@ -1,6 +1,5 @@
 package com.example.query_service.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,13 +14,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
     @Column(unique = true)
-    private Long employeeId;
+    private Long employeeID;
     private String firstName;
     private String lastName;
     private String email;
@@ -32,8 +29,7 @@ public class Employee {
     private Boolean isDelete = false;
 
     @ManyToOne
-    @JsonBackReference
-    private Department department;
+    private com.example.query_service.entity.Department department;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -49,5 +45,4 @@ public class Employee {
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
-
 }
