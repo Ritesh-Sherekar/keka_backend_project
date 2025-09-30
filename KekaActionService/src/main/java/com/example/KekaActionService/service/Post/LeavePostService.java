@@ -4,8 +4,9 @@ import com.example.KekaActionService.dto.LeaveDto;
 import com.example.KekaActionService.entity.*;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.exception.InsufficientLeavesException;
+import com.example.KekaActionService.exception.InvalidBandException;
 import com.example.KekaActionService.exception.InvalidLeaveException;
-import com.example.KekaActionService.repository.AvailableLeavesRepo;
+import com.example.KekaActionService.repository.UsedLeavesRepo;
 import com.example.KekaActionService.repository.BandRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import com.example.KekaActionService.repository.LeaveRepo;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @Slf4j
 @Service
@@ -23,7 +25,7 @@ public class LeavePostService {
     private LeaveRepo leaveRepo;
 
     @Autowired
-    private AvailableLeavesRepo availableLeavesRepo;
+    private UsedLeavesRepo usedLeavesRepo;
 
     @Autowired
     private EmployeeRepo employeeRepo;
@@ -33,7 +35,9 @@ public class LeavePostService {
 
     public Leave addLeave(LeaveDto leaveDto) {
 
-        Employee employee = employeeRepo.findByEmployeeID(leaveDto.getEmployeeID())
+        long employeeID = leaveDto.getEmployeeID();
+        System.out.println(employeeID);
+        Employee employee = employeeRepo.findByEmployeeID(employeeID)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
 
         Employee approver = employee.getDepartment() != null
@@ -46,7 +50,6 @@ public class LeavePostService {
 
         Band availableBandLeaves = bandRepo.findByBands(employee.getBand().getBands()).orElseThrow(() -> new InvalidBandException("Invalid Band"));
 
-        float totalLeaves = 0;
 
         Leave leave = new Leave();
         leave.setEmployee(employee);
@@ -63,56 +66,103 @@ public class LeavePostService {
                     return day;
                 }).toList();
 
-        totalLeaves =(float) leaveDto.getLeaveDays().stream().mapToDouble(leaveDayDto -> leaveDayDto.getHalf().getValue()).sum();
+        float totalAppliedLeaves = (float) leaveDto.getLeaveDays().stream().mapToDouble(leaveDayDto -> leaveDayDto.getHalf().getValue()).sum();
 
         leave.setLeaveDays(leaveDays);
 
-        AvailableLeaves availableLeaves = availableLeavesRepo.findByEmployeeEmployeeID(employee.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Invalid EmployeeId"));
+        UsedLeaves usedLeaves = usedLeavesRepo.findByEmployeeEmployeeID(employee.getEmployeeID()).orElseGet(() -> {
+            UsedLeaves ul = new UsedLeaves();
+            ul.setEmployee(employee);
+            ul.setUsedPaidLeaves(0f);
+            ul.setUsedSickLeaves(0f);
+            ul.setUsedCasualLeaves(0f);
+            ul.setUsedUnpaidLeaves(0f);
+            ul.setUsedParentalLeaves(0f);
+            return usedLeavesRepo.save(ul);
+        });
 
         switch (leaveDto.getLeaveType()) {
             case SICK:
-                if (availableLeaves.getAvailableSickLeaves() < leaveDto.getTotalLeaveDays()) {
-                    throw new InsufficientLeavesException("Not enough sick leaves available");
-                }
-                availableLeaves.setAvailableSickLeaves(availableLeaves.getAvailableSickLeaves() - leaveDto.getTotalLeaveDays());
+                applyLeave(
+                        availableBandLeaves.getSickLeaves(),
+                        usedLeaves.getUsedSickLeaves(),
+                        totalAppliedLeaves,
+                        usedLeaves::setUsedSickLeaves,
+                        usedLeaves,
+                        "sick"
+                );
                 break;
 
             case CASUAL:
-                if (availableLeaves.getAvailableCasualLeaves() < leaveDto.getTotalLeaveDays()) {
-                    throw new InsufficientLeavesException("Not enough casual leaves available");
-                }
-                availableLeaves.setAvailableCasualLeaves(availableLeaves.getAvailableCasualLeaves() - totalLeaves);
+                applyLeave(
+                        availableBandLeaves.getCasualLeaves(),
+                        usedLeaves.getUsedCasualLeaves(),
+                        totalAppliedLeaves,
+                        usedLeaves::setUsedCasualLeaves,
+                        usedLeaves,
+                        "casual"
+                );
                 break;
 
             case PAID:
-                if (availableLeaves.getAvailablePaidLeaves() < leaveDto.getTotalLeaveDays()) {
-                    throw new InsufficientLeavesException("Not enough paid leaves available");
-                }
-                availableLeaves.setAvailablePaidLeaves(availableLeaves.getAvailablePaidLeaves() - leaveDto.getTotalLeaveDays());
+                applyLeave(
+                        availableBandLeaves.getPaidLeaves(),
+                        usedLeaves.getUsedPaidLeaves(),
+                        totalAppliedLeaves,
+                        usedLeaves::setUsedPaidLeaves,
+                        usedLeaves,
+                        "paid"
+                );
                 break;
 
             case UNPAID:
+                usedLeaves.setUsedUnpaidLeaves(
+                        usedLeaves.getUsedUnpaidLeaves() + totalAppliedLeaves
+                );
                 break;
 
             case MATERNITY:
-                if (availableLeaves.getAvailableParentalLeaves() < leaveDto.getTotalLeaveDays()) {
-                    throw new InsufficientLeavesException("Not enough maternity leaves available");
-                }
-                availableLeaves.setAvailableParentalLeaves(availableLeaves.getAvailableParentalLeaves() - leaveDto.getTotalLeaveDays());
-                break;
-
             case PATERNITY:
-                if (availableLeaves.getAvailableParentalLeaves() < leaveDto.getTotalLeaveDays()) {
-                    throw new InsufficientLeavesException("Not enough paternity leaves available");
-                }
-                availableLeaves.setAvailableParentalLeaves(availableLeaves.getAvailableParentalLeaves() - leaveDto.getTotalLeaveDays());
+                applyLeave(
+                        availableBandLeaves.getParentalLeaves(),
+                        usedLeaves.getUsedParentalLeaves(),
+                        totalAppliedLeaves,
+                        usedLeaves::setUsedParentalLeaves,
+                        usedLeaves,
+                        leaveDto.getLeaveType().name().toLowerCase()
+                );
                 break;
 
             default:
                 throw new InvalidLeaveException("Unknown leave type: " + leaveDto.getLeaveType());
         }
 
+        usedLeavesRepo.save(usedLeaves);
+
         log.info("Saving leave: {}", leave);
         return leaveRepo.save(leave);
     }
+
+    private void applyLeave(
+            float available,
+            float used,
+            float totalAppliedLeaves,
+            Consumer<Float> setUsedLeave,
+            UsedLeaves usedLeaves,
+            String leaveTypeName
+    ) {
+        if (used < available) {
+            if (used + totalAppliedLeaves > available) {
+                float excess = (used + totalAppliedLeaves) - available;
+                used = available;
+                usedLeaves.setUsedUnpaidLeaves(usedLeaves.getUsedUnpaidLeaves() + excess);
+            } else {
+                used += totalAppliedLeaves;
+            }
+            setUsedLeave.accept(used);
+        } else {
+            throw new InsufficientLeavesException("Not enough " + leaveTypeName + " leaves available");
+        }
+    }
+
 }
