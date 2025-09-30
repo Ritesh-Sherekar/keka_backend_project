@@ -17,9 +17,9 @@ public class AttendanceController {
 
     @Autowired
     private AttendanceService attendanceService;
-    @GetMapping("/getAttendanceByEmployeeId/{employeeID}")
-    public ResponseEntity<List<Attendance>> getAttendanceByEmployeeId(@PathVariable Long employeeID){
-        List<Attendance> attendance = attendanceService.getAttendanceByEmployeeId(employeeID);
+    @GetMapping("/getAttendanceByEmployeeID/{employeeID}")
+    public ResponseEntity<List<Attendance>> getAttendanceByEmployeeID(@PathVariable Long employeeID){
+        List<Attendance> attendance = attendanceService.getAttendanceByEmployeeID(employeeID);
         return new ResponseEntity<>(attendance, HttpStatus.OK);
     }
     @GetMapping("/getAttendanceByEmployeeIDAndDate")
