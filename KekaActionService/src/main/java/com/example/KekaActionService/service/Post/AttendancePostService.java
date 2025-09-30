@@ -5,6 +5,7 @@ import com.example.KekaActionService.dto.attendanceDto.AttendanceClockOutRequest
 import com.example.KekaActionService.dto.attendanceDto.AttendanceRegularizationRequestDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.entity.Employee;
+import com.example.KekaActionService.entity.Shift;
 import com.example.KekaActionService.enums.Badge;
 import com.example.KekaActionService.enums.Status;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +38,10 @@ public class AttendancePostService {
     }
 
     // Clock In API
-    public Attendance clockIn(AttendanceClockInRequestDto dto) {
-        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
+    public Attendance clockIn(AttendanceClockInRequestDto dto) throws MessagingException {
+        Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID())
+                .orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
 
-        if (byEmployeeID != null) {
             Attendance attendance = new Attendance();
             attendance.setEmployee(byEmployeeID);
             attendance.setAttendanceDate(dto.getAttendanceDate());
@@ -48,9 +50,19 @@ public class AttendancePostService {
             attendance.setStatus(Status.PRESENT);
             attendance.setBadge(Badge.IN);
 
-            return attendanceRepo.save(attendance);
+        Attendance saveClockIn = attendanceRepo.save(attendance);
+
+        Shift shift = byEmployeeID.getShift();
+        if (shift != null && dto.getCheckInTime() != null){
+            LocalTime startTime = shift.getStartTime();
+            LocalTime checkInTime = dto.getCheckInTime().toLocalTime();
+
+            if (checkInTime.isAfter(startTime.plusHours(1))){
+                emailPostService.sendLateArrivalMail(byEmployeeID, saveClockIn);
+            }
         }
-        throw new EmployeeIdNotFoundException("Employee With Given ID Not Found");
+
+        return saveClockIn;
     }
 
     // Clock Out API
