@@ -35,3 +35,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+logging:
+  file:
+    name: logs/app.log
+  level:
+    root: INFO
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} | %level | %logger{36} | %msg%n"
