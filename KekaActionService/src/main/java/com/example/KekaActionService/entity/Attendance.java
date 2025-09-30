@@ -2,6 +2,7 @@ package com.example.KekaActionService.entity;
 
 import com.example.KekaActionService.enums.Badge;
 import com.example.KekaActionService.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Attendance {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeID", nullable = false,referencedColumnName = "employeeID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","shift"})
     private Employee employee;
     private LocalDate attendanceDate;
     private LocalDateTime checkInTime;
