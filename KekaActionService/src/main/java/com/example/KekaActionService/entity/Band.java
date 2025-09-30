@@ -18,5 +18,10 @@ public class Band {
 
     @Enumerated(EnumType.STRING)
     private Bands bands;
-    private int leaves;
+
+    private float paidLeaves;
+    private float sickLeaves;
+    private float casualLeaves;
+    private float unpaidLeaves;
+    private float parentalLeaves;
 }

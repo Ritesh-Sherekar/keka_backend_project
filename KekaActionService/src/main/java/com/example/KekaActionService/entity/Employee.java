@@ -33,6 +33,9 @@ public class Employee {
     private Boolean isDeleted = false;
 
     @ManyToOne
+    private Band band;
+
+    @ManyToOne
     @JsonBackReference
     private Department department;
 

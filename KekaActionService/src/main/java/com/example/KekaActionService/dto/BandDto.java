@@ -11,5 +11,9 @@ import lombok.NoArgsConstructor;
 public class BandDto {
 
     private Bands bands;
-    private int leaves;
+    private Float paidLeaves;
+    private Float sickLeaves;
+    private Float casualLeaves;
+    private Float unpaidLeaves;
+    private Float parentalLeaves;
 }

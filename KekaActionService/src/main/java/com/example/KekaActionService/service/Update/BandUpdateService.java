@@ -2,7 +2,6 @@ package com.example.KekaActionService.service.Update;
 
 import com.example.KekaActionService.dto.BandDto;
 import com.example.KekaActionService.entity.Band;
-import com.example.KekaActionService.exception.BandAlreadyExistsException;
 import com.example.KekaActionService.exception.InvalidBandException;
 import com.example.KekaActionService.repository.BandRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +17,23 @@ public class BandUpdateService {
     @Autowired
     private BandRepo bandRepo;
 
-    public Band updateBand(BandDto bandDto){
+    public Band updateBand(BandDto bandDto) {
 
-        log.info(String.valueOf(bandDto));
-        Band band = bandRepo.findByBands(bandDto.getBands()).orElseThrow(() -> new InvalidBandException("Invalid Band"));
-        band.setLeaves(bandDto.getLeaves());
+        log.info("Updating band: {}", bandDto);
+
+        Band band = bandRepo.findByBands(bandDto.getBands())
+                .orElseThrow(() -> new InvalidBandException("Invalid Band"));
+
+        if (bandDto.getPaidLeaves() != null) band.setPaidLeaves(bandDto.getPaidLeaves());
+        if (bandDto.getSickLeaves() != null) band.setSickLeaves(bandDto.getSickLeaves());
+        if (bandDto.getCasualLeaves() != null) band.setCasualLeaves(bandDto.getCasualLeaves());
+        if (bandDto.getUnpaidLeaves() != null) band.setUnpaidLeaves(bandDto.getUnpaidLeaves());
+        if (bandDto.getParentalLeaves() != null) band.setParentalLeaves(bandDto.getParentalLeaves());
+
         Band updatedBand = bandRepo.save(band);
 
-        log.info(String.valueOf(updatedBand));
+        log.info("Updated band: {}", updatedBand);
         return updatedBand;
     }
+
 }
