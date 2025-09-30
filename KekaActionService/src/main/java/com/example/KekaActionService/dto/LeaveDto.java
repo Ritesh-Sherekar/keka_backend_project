@@ -12,4 +12,5 @@ public class LeaveDto {
     private LeaveType leaveType;
     private String reason;
     private List<LeaveDayDto> leaveDays;
+    private float totalLeaveDays;
 }

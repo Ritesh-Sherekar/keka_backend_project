@@ -1,6 +1,9 @@
 package com.example.security_service.entity;
 
+import com.example.security_service.entity.Department;
+import com.example.security_service.entity.UsedLeaves;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString(exclude = {"department"})
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -32,8 +36,15 @@ public class Employee {
     private Boolean isDeleted = false;
 
     @ManyToOne
+    private Band band;
+
+    @ManyToOne
     @JsonBackReference
     private Department department;
+
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private UsedLeaves usedLeaves;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -43,6 +54,17 @@ public class Employee {
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+
+        if (usedLeaves == null) {
+            UsedLeaves uLeaves= new UsedLeaves();
+            uLeaves.setUsedPaidLeaves(0f);
+            uLeaves.setUsedSickLeaves(0f);
+            uLeaves.setUsedCasualLeaves(0f);
+            uLeaves.setUsedUnpaidLeaves(0f);
+            uLeaves.setUsedParentalLeaves(0f);
+            uLeaves.setEmployee(this);
+            this.usedLeaves = uLeaves;
+        }
     }
 
     @PreUpdate

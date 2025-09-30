@@ -3,7 +3,7 @@ package com.example.KekaActionService.enums;
 public enum LeaveType {
     CASUAL,
     SICK,
-    EARNED,
+    PAID,
     UNPAID,
     MATERNITY,
     PATERNITY

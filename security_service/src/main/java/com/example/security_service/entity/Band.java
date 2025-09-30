@@ -1,6 +1,6 @@
-package com.example.KekaActionService.entity;
+package com.example.security_service.entity;
 
-import com.example.KekaActionService.enums.Bands;
+import com.example.security_service.enums.Bands;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
