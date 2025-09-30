@@ -22,7 +22,7 @@ public class EmployeeService {
         return employeeRepo.findAll();
     }
 
-    public Employee getEmployeeByEmployeeId(int employeeID) {
+    public Employee getEmployeeByEmployeeID(int employeeID) {
         return employeeRepo.findByEmployeeID(employeeID);
     }
 
