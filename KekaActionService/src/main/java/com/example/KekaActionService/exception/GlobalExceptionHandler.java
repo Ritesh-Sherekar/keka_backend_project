@@ -52,5 +52,12 @@ public class GlobalExceptionHandler {
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Department Not Found", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
+
+    // No Attendance Present On This Day
+    @ExceptionHandler(NoAttendanceOnThisDayException.class)
+    public ResponseEntity<ErrorResponses> noAttendanceOnThisDay(NoAttendanceOnThisDayException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "No Attendance Found On This Day", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
+    }
 }
 
