@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"department"})
 public class Employee {
 
     @Id
@@ -40,10 +39,12 @@ public class Employee {
 
     @ManyToOne
     @JsonBackReference
+    @ToString.Exclude
     private Department department;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @ToString.Exclude
     private UsedLeaves usedLeaves;
 
     private LocalDateTime createdAt;

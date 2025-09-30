@@ -2,7 +2,6 @@ package com.example.KekaActionService.service.Post;
 
 import com.example.KekaActionService.dto.LeaveDto;
 import com.example.KekaActionService.entity.*;
-import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.exception.InsufficientLeavesException;
 import com.example.KekaActionService.exception.InvalidBandException;
 import com.example.KekaActionService.exception.InvalidLeaveException;
@@ -13,6 +12,7 @@ import com.example.KekaActionService.repository.LeaveRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -33,6 +33,7 @@ public class LeavePostService {
     @Autowired
     private BandRepo bandRepo;
 
+    @Transactional
     public Leave addLeave(LeaveDto leaveDto) {
 
         long employeeID = leaveDto.getEmployeeID();
@@ -49,7 +50,6 @@ public class LeavePostService {
         }
 
         Band availableBandLeaves = bandRepo.findByBands(employee.getBand().getBands()).orElseThrow(() -> new InvalidBandException("Invalid Band"));
-
 
         Leave leave = new Leave();
         leave.setEmployee(employee);
@@ -137,7 +137,7 @@ public class LeavePostService {
                 throw new InvalidLeaveException("Unknown leave type: " + leaveDto.getLeaveType());
         }
 
-        usedLeavesRepo.save(usedLeaves);
+//        usedLeavesRepo.save(usedLeaves);
 
         log.info("Saving leave: {}", leave);
         return leaveRepo.save(leave);
