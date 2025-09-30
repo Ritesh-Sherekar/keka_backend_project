@@ -23,7 +23,7 @@ public class AttendancePostController {
 
     // Clock In Api
     @PostMapping("/clockIN")
-    public ResponseEntity<Attendance> clockInApi(@RequestBody AttendanceClockInRequestDto dto){
+    public ResponseEntity<Attendance> clockInApi(@RequestBody AttendanceClockInRequestDto dto) throws MessagingException {
         Attendance attendance1 = attendancePostService.clockIn(dto);
         return new ResponseEntity<>(attendance1, HttpStatus.OK);
     }
