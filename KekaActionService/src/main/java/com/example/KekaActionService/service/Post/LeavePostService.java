@@ -2,6 +2,7 @@ package com.example.KekaActionService.service.Post;
 
 import com.example.KekaActionService.dto.LeaveDto;
 import com.example.KekaActionService.entity.*;
+import com.example.KekaActionService.enums.LeaveStatus;
 import com.example.KekaActionService.exception.InsufficientLeavesException;
 import com.example.KekaActionService.exception.InvalidBandException;
 import com.example.KekaActionService.exception.InvalidLeaveException;
@@ -9,6 +10,7 @@ import com.example.KekaActionService.repository.UsedLeavesRepo;
 import com.example.KekaActionService.repository.BandRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import com.example.KekaActionService.repository.LeaveRepo;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,9 @@ public class LeavePostService {
 
     @Autowired
     private BandRepo bandRepo;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Transactional
     public Leave addLeave(LeaveDto leaveDto) {
@@ -165,4 +170,12 @@ public class LeavePostService {
         }
     }
 
+    public LeaveDto approveLeave(long leaveId){
+
+        Leave leave = leaveRepo.findById(leaveId).orElseThrow(() -> new InvalidLeaveException("Leave id not valid"));
+        LeaveStatus status = leave.getStatus();
+        leave.setStatus(LeaveStatus.APPROVED);
+
+        return objectMapper.convertValue(leave, LeaveDto.class);
+    }
 }
