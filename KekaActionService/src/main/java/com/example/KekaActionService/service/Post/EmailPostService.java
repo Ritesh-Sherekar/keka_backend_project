@@ -25,7 +25,9 @@ public class EmailPostService {
 
     // Sending Forgot Password Mail
     public String sendForgotPasswordMail(PasswordResetDto passwordResetDto) throws MessagingException {
-        String resetLink =  "http://localhost:4580/auth/reset_password?passwordResetToken=" + passwordResetDto.getResetToken();
+
+        System.out.println("token in mail : " + passwordResetDto.getResetToken());
+        String resetLink = "http://localhost:4580/reset-password-form?passwordResetToken=" + passwordResetDto.getResetToken();
         String html = EmailTemplate.getForgotPasswordHtml(passwordResetDto.getUserName(), resetLink);
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
