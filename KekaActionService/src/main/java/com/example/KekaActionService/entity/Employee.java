@@ -1,6 +1,7 @@
 package com.example.KekaActionService.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -50,6 +51,7 @@ public class Employee {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shiftID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Shift shift;
 
     // --- JPA Callbacks for timestamps ---

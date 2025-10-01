@@ -4,6 +4,7 @@ import com.example.KekaActionService.dto.PasswordResetDto;
 import com.example.KekaActionService.entity.Attendance;
 import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.repository.EmployeeRepo;
+import com.example.KekaActionService.response.EmailLateArrivalTemplate;
 import com.example.KekaActionService.response.EmailRegularizationTemplate;
 import com.example.KekaActionService.response.EmailTemplate;
 import jakarta.mail.MessagingException;
@@ -22,10 +23,8 @@ public class EmailPostService {
     @Autowired
     JavaMailSender javaMailSender;
 
-    EmailTemplate emailTemplate = new EmailTemplate();
-
+    // Sending Forgot Password Mail
     public String sendForgotPasswordMail(PasswordResetDto passwordResetDto) throws MessagingException {
-        System.out.println("In email service");
         String resetLink =  "http://localhost:4580/auth/reset_password?passwordResetToken=" + passwordResetDto.getResetToken();
         String html = EmailTemplate.getForgotPasswordHtml(passwordResetDto.getUserName(), resetLink);
 
@@ -41,13 +40,28 @@ public class EmailPostService {
         return "Recovery mail sent";
     }
 
+    // Sending Mail for Regularization Request
     public void sendRegularizedMail(Employee employee, Attendance attendance) throws MessagingException {
         String html = EmailRegularizationTemplate.getLeaveRegularizationHtml(employee.getFirstName(), attendance.getAttendanceDate().toString(), attendance.getStatus().toString(), "Regularization Update");
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 
-        mimeMessageHelper.setSubject("Your request is regularized successfully.");
+        mimeMessageHelper.setSubject("\u2705 Your request is regularized successfully.");
+        mimeMessageHelper.setTo(employee.getEmail());
+        mimeMessageHelper.setText(html,true);
+
+        javaMailSender.send(mimeMessage);
+    }
+
+    // Sending Mail For Late Arrival
+    public void sendLateArrivalMail(Employee employee, Attendance attendance) throws MessagingException {
+        String html = EmailLateArrivalTemplate.getLateArrivalHtml(employee.getFirstName(), attendance.getAttendanceDate().toString(), attendance.getCheckInTime().toString(), "Please ensure punctuality.");
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+
+        mimeMessageHelper.setSubject("\u26A0\uFE0F Late Arrival: Clocked in more then 1 hour late");
         mimeMessageHelper.setTo(employee.getEmail());
         mimeMessageHelper.setText(html,true);
 

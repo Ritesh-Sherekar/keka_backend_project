@@ -15,7 +15,7 @@ public class AttendanceService {
     @Autowired
     private AttendanceRepo attendanceRepo;
 
-    public List<Attendance> getAttendanceByEmployeeId(Long employeeID){
+    public List<Attendance> getAttendanceByEmployeeID(Long employeeID){
         return attendanceRepo.findByEmployee_EmployeeID(employeeID);
     }
     public List<Attendance> getAttendanceByEmployeeIDAndDate(Long employeeID, LocalDate startDate, LocalDate endDate){
