@@ -12,7 +12,6 @@ import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.exception.NoAttendanceOnThisDayException;
 import com.example.KekaActionService.repository.AttendanceRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
-import com.example.KekaActionService.response.EmailRegularizationTemplate;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AttendancePostService {

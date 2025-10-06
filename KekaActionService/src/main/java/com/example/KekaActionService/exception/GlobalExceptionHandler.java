@@ -59,5 +59,40 @@ public class GlobalExceptionHandler {
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "No Attendance Found On This Day", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
+
+    //Band already exists
+    @ExceptionHandler(BandAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponses> bandAlreadyExists(BandAlreadyExistsException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Band already exists", LocalDateTime.now(), HttpStatus.CONFLICT.toString());
+        return new ResponseEntity<>(responses, HttpStatus.CONFLICT);
+    }
+
+    //Invalid Band
+    @ExceptionHandler(InvalidBandException.class)
+    public ResponseEntity<ErrorResponses> invalidBand(InvalidBandException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Band", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
+        return new ResponseEntity<>(responses, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    //Insufficient leaves
+    @ExceptionHandler(InsufficientLeavesException.class)
+    public ResponseEntity<ErrorResponses> insufficientLeaves(InsufficientLeavesException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Leaves Exauted", LocalDateTime.now(), HttpStatus.NO_CONTENT.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NO_CONTENT);
+    }
+
+    //Invalid Leave
+    @ExceptionHandler(InvalidLeaveException.class)
+    public ResponseEntity<ErrorResponses> invalidBLeave(InvalidLeaveException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Leave", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
+        return new ResponseEntity<>(responses, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    //Insufficient Permission
+    @ExceptionHandler(InsufficientPermissionsException.class)
+    public ResponseEntity<ErrorResponses> insufficientPermission(InsufficientPermissionsException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Permission", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
+        return new ResponseEntity<>(responses, HttpStatus.FORBIDDEN);
+    }
 }
 
