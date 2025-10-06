@@ -58,6 +58,9 @@ public class EmployeeUpdateService {
         } else {
             shift = null;
         }
+    public Employee updateEmployee(long empId, Map<String, Object> updates) {
+        Employee employee = employeeRepo.findByEmployeeID(empId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
 
         if (updates.containsKey("band")) {
             String bandValue = updates.get("band").toString().toUpperCase();
@@ -70,43 +73,46 @@ public class EmployeeUpdateService {
         }
 
         updates.forEach((key, value) -> {
+            if (value == null) return;
+
             switch (key) {
-                case "firstName":
-                    employee.setFirstName((String) value);
-                    break;
-                case "lastName":
-                    employee.setLastName((String) value);
-                    break;
-                case "email":
-                    employee.setEmail((String) value);
-                    break;
-                case "phone":
-                    employee.setPhone((String) value);
-                    break;
-                case "designation":
-                    employee.setDesignation((String) value);
-                    break;
-                case "department":
+                case "firstName" -> employee.setFirstName((String) value);
+                case "lastName" -> employee.setLastName((String) value);
+                case "email" -> employee.setEmail((String) value);
+                case "phone" -> employee.setPhone((String) value);
+                case "designation" -> employee.setDesignation((String) value);
+
+                case "department" -> {
+                    Department department = departmentRepo.findByDepartmentName((String) value)
+                            .orElseThrow(() -> new DepartmentNotFoundException("Department not found"));
                     employee.setDepartment(department);
-                    break;
-                case "joinDate":
-                    employee.setJoinDate((LocalDate) value);
-                    break;
-                case "active":
-                    employee.setActive((Boolean) value);
-                    break;
-                case "easyDelete":
-                    employee.setIsDeleted((Boolean) value);
-                    break;
-                case "shift":
+                }
+
+                case "joinDate" -> {
+                    if (value instanceof String s) {
+                        employee.setJoinDate(LocalDate.parse(s));
+                    } else if (value instanceof LocalDate d) {
+                        employee.setJoinDate(d);
+                    }
+                }
+
+                case "active" -> employee.setActive((Boolean) value);
+                case "isDeleted" -> employee.setIsDeleted((Boolean) value);
+
+                case "shift" -> {
+                    Shift shift = shiftRepo.findById((Integer) value)
+                            .orElseThrow(() -> new ShiftNotPresentException("Shift Not Found"));
                     employee.setShift(shift);
                     break;
                 case "band":
                     employee.setBand(band);
                     break;
+                }
             }
         });
+
         employee.setUpdatedAt(LocalDateTime.now());
         return employeeRepo.save(employee);
     }
+
 }

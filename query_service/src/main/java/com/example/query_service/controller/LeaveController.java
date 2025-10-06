@@ -23,28 +23,28 @@ public class LeaveController {
     private ObjectMapper objectMapper;
 
     @GetMapping("/getAllLeave")
-    public ResponseEntity<List<Leave>> getAllLeave() {
-        List<Leave> leave = leaveService.getAllLeave();
+    public ResponseEntity<List<LeaveDto>> getAllLeave() {
+        List<LeaveDto> leave = leaveService.getAllLeave();
         return new ResponseEntity<>(leave, HttpStatus.OK);
     }
     @GetMapping("/getLeaveByEmployeeID/{employeeID}")
-    public ResponseEntity<List<Leave>> getLeaveByEmployeeID(@PathVariable Long employeeID){
-        List<Leave> leave = leaveService.getLeaveByEmployeeID(employeeID);
+    public ResponseEntity<List<LeaveDto>> getLeaveByEmployeeID(@PathVariable Long employeeID){
+        List<LeaveDto> leave = leaveService.getLeaveByEmployeeID(employeeID);
         return new ResponseEntity<>(leave, HttpStatus.OK);
     }
     @GetMapping("/getPendingLeave")
-    public ResponseEntity<List<Leave>> getPendingLeave() {
-        List<Leave> leave = leaveService.getPendingLeave();
+    public ResponseEntity<List<LeaveDto>> getPendingLeave() {
+        List<LeaveDto> leave = leaveService.getPendingLeave();
         return new ResponseEntity<>(leave, HttpStatus.OK);
     }
     @GetMapping("/getApprovedLeave")
-    public ResponseEntity<List<Leave>> getApprovedLeave() {
-        List<Leave> leave = leaveService.getApprovedLeave();
+    public ResponseEntity<List<LeaveDto>> getApprovedLeave() {
+        List<LeaveDto> leave = leaveService.getApprovedLeave();
         return new ResponseEntity<>(leave, HttpStatus.OK);
     }
     @GetMapping("/getRejectedLeave")
-    public ResponseEntity<List<Leave>> getRejectedLeave(){
-        List<Leave> leave = leaveService.getRejectedLeave();
+    public ResponseEntity<List<LeaveDto>> getRejectedLeave(){
+        List<LeaveDto> leave = leaveService.getRejectedLeave();
         return new ResponseEntity<>(leave, HttpStatus.OK);
     }
 }

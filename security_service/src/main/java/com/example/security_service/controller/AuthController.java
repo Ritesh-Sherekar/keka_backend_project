@@ -2,6 +2,7 @@ package com.example.security_service.controller;
 
 import com.example.security_service.dto.UserDto;
 import com.example.security_service.model.LogIdPassword;
+import com.example.security_service.model.ResetPasswordRequest;
 import com.example.security_service.response.JwtResponse;
 import com.example.security_service.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @RestController
@@ -51,10 +55,15 @@ public class AuthController {
     }
 
     @PostMapping("/reset_password")
-    public ResponseEntity<String> resetPassword(@RequestParam String passwordResetToken, @RequestParam String newPassword){
+    public ResponseEntity<String> resetPassword(
+            @RequestBody ResetPasswordRequest request,
+            @RequestHeader String authHeader) {
 
-        log.info("/auth/reset_password");
-        String message = authService.resetPassword(passwordResetToken, newPassword);
-        return new ResponseEntity<>(message, HttpStatus.OK);
+        System.out.println("Auth header : " + authHeader);
+        String token = authHeader.replace("Bearer ", "").trim();
+        System.out.println("Token in reset controller : " + token);
+
+        String message = authService.resetPassword(token, request.getNewPassword());
+        return ResponseEntity.ok(message);
     }
 }

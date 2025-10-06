@@ -18,7 +18,6 @@ public class EmailPostController {
     @PostMapping("/resetPassword")
     public ResponseEntity<String> sendResetPasswordMail(@RequestBody PasswordResetDto passwordResetDto){
 
-        System.out.println("in email controller");
         String responceString = null;
         try {
             responceString = emailService.sendForgotPasswordMail(passwordResetDto);
