@@ -16,7 +16,7 @@ private RoleRepository roleRepository;
 
         Roles roles = new Roles();
         roles.setRoleId(rolesDto.getRoleId());
-        roles.setRole(rolesDto.getRole());
+        roles.setRole("ROLE_" + rolesDto.getRole());
 
         Roles savedRole = roleRepository.save(roles);
         return new RolesDto(savedRole.getRoleId(), savedRole.getRole());

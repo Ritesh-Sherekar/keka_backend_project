@@ -12,6 +12,7 @@ import java.util.Set;
 public class UserDto {
 
     private String userName;
+    private Long employeeId;
     private String password;
     private Set<String> roles;
     private EmployeeDto employeeDto;

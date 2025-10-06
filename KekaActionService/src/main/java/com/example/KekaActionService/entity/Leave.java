@@ -48,10 +48,14 @@ public class Leave {
 
     private Boolean isDelete = false;
 
+    private float leaveDaysCount;
+
     @OneToMany(mappedBy = "leave", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     @JsonManagedReference
     private List<LeaveDay> leaveDays = new ArrayList<>();
+
+
 
     @PrePersist
     protected void onCreate() {

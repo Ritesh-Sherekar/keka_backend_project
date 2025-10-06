@@ -11,5 +11,5 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
 
     Optional<Employee> findEmployeeByShift_ShiftId(Long shiftId);
 
-    Optional<Employee> findByEmployeeEmail(String userName);
+    Optional<Employee> findByEmail(String userName);
 }

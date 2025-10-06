@@ -27,30 +27,12 @@ public class SecurityConfig {
         System.out.println("in security filter chain");
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/band/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/band/**").hasRole("ADMIN")
+                        .requestMatchers("/leave/approve", "/leave/reject").hasRole("MANAGER")
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//
-//        return authenticationConfiguration.getAuthenticationManager();
-//    }
-//
-//    @Bean
-//    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-//
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider(userDetailsService);
-//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
-//        return daoAuthenticationProvider;
-//    }
 }
