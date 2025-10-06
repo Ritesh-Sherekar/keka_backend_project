@@ -4,6 +4,7 @@ import com.example.KekaActionService.dto.LeaveDto;
 import com.example.KekaActionService.entity.*;
 import com.example.KekaActionService.enums.LeaveStatus;
 import com.example.KekaActionService.exception.InsufficientLeavesException;
+import com.example.KekaActionService.exception.InsufficientPermissionsException;
 import com.example.KekaActionService.exception.InvalidBandException;
 import com.example.KekaActionService.exception.InvalidLeaveException;
 import com.example.KekaActionService.repository.UsedLeavesRepo;
@@ -13,6 +14,8 @@ import com.example.KekaActionService.repository.LeaveRepo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -170,12 +173,45 @@ public class LeavePostService {
         }
     }
 
-    public LeaveDto approveLeave(long leaveId){
+    public LeaveDto approveLeave(long leaveId) {
+
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long currentEmployeesEmployeeID = employeeRepo.findByEmployeeEmail(userName).orElseThrow(() -> new UsernameNotFoundException(userName + "Is not registered with us")).getEmployeeID();
 
         Leave leave = leaveRepo.findById(leaveId).orElseThrow(() -> new InvalidLeaveException("Leave id not valid"));
-        LeaveStatus status = leave.getStatus();
-        leave.setStatus(LeaveStatus.APPROVED);
+        Long managerEmployeeID = leave.getEmployee().getDepartment().getManager().getEmployeeID();
 
-        return objectMapper.convertValue(leave, LeaveDto.class);
+        Leave savedLeave;
+        if (currentEmployeesEmployeeID.equals(managerEmployeeID)) {
+
+            LeaveStatus status = leave.getStatus();
+            leave.setStatus(LeaveStatus.APPROVED);
+            savedLeave = leaveRepo.save(leave);
+        }else {
+            throw new InsufficientPermissionsException("You don't have authority to approve leaves of this employee");
+        }
+
+        return objectMapper.convertValue(savedLeave, LeaveDto.class);
+    }
+
+    public LeaveDto rejectLeave(long leaveId) {
+
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long currentEmployeesEmployeeID = employeeRepo.findByEmployeeEmail(userName).orElseThrow(() -> new UsernameNotFoundException(userName + "Is not registered with us")).getEmployeeID();
+
+        Leave leave = leaveRepo.findById(leaveId).orElseThrow(() -> new InvalidLeaveException("Leave id not valid"));
+        Long managerEmployeeID = leave.getEmployee().getDepartment().getManager().getEmployeeID();
+
+        Leave savedLeave;
+        if (currentEmployeesEmployeeID.equals(managerEmployeeID)) {
+
+            LeaveStatus status = leave.getStatus();
+            leave.setStatus(LeaveStatus.REJECTED);
+            savedLeave = leaveRepo.save(leave);
+        }else {
+            throw new InsufficientPermissionsException("You don't have authority to reject leaves of this employee");
+        }
+
+        return objectMapper.convertValue(savedLeave, LeaveDto.class);
     }
 }

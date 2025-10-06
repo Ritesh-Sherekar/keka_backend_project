@@ -87,5 +87,12 @@ public class GlobalExceptionHandler {
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Leave", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
         return new ResponseEntity<>(responses, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    //Insufficient Permission
+    @ExceptionHandler(InsufficientPermissionsException.class)
+    public ResponseEntity<ErrorResponses> insufficientPermission(InsufficientPermissionsException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Permission", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
+        return new ResponseEntity<>(responses, HttpStatus.FORBIDDEN);
+    }
 }
 

@@ -32,4 +32,12 @@ public class LeaveUpdateController {
 
         return new ResponseEntity<>(leaveDto, HttpStatus.OK);
     }
+
+    @PostMapping("/reject")
+    public ResponseEntity<LeaveDto> rejectLeave(long leaveId){
+
+        LeaveDto leaveDto = leavePostService.rejectLeave(leaveId);
+
+        return new ResponseEntity<>(leaveDto, HttpStatus.OK);
+    }
 }
