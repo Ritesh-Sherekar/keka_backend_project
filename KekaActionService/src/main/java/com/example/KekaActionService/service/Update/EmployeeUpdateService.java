@@ -1,10 +1,14 @@
 package com.example.KekaActionService.service.Update;
 
+import com.example.KekaActionService.entity.Band;
 import com.example.KekaActionService.entity.Department;
 import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.entity.Shift;
+import com.example.KekaActionService.enums.Bands;
+import com.example.KekaActionService.exception.BandNotFoundException;
 import com.example.KekaActionService.exception.DepartmentNotFoundException;
 import com.example.KekaActionService.exception.ShiftNotPresentException;
+import com.example.KekaActionService.repository.BandRepo;
 import com.example.KekaActionService.repository.DepartmentRepo;
 import com.example.KekaActionService.repository.EmployeeRepo;
 import com.example.KekaActionService.repository.ShiftRepo;
@@ -25,6 +29,9 @@ public class EmployeeUpdateService {
     @Autowired
     private ShiftRepo shiftRepo;
 
+    @Autowired
+    private BandRepo bandRepo;
+
     private final EmployeeRepo employeeRepo;
 
     public EmployeeUpdateService(EmployeeRepo employeeRepo){
@@ -38,6 +45,7 @@ public class EmployeeUpdateService {
 
         Department department;
         Shift shift;
+        Band band;
 
         if (updates.containsKey("department")){
             department = departmentRepo.findByDepartmentName((String) updates.get("department")).orElseThrow(() -> new DepartmentNotFoundException("Department not found"));
@@ -49,6 +57,16 @@ public class EmployeeUpdateService {
             shift =  shiftRepo.findById((Integer) updates.get("shift")).orElseThrow(()-> new ShiftNotPresentException("Shift Not Found"));
         } else {
             shift = null;
+        }
+
+        if (updates.containsKey("band")) {
+            String bandValue = updates.get("band").toString().toUpperCase();
+
+            Bands bandEnum = Bands.valueOf(bandValue);
+            band = bandRepo.findByBands(bandEnum)
+                    .orElseThrow(() -> new BandNotFoundException("Band not found in database"));
+        } else {
+            band = null;
         }
 
         updates.forEach((key, value) -> {
@@ -82,6 +100,9 @@ public class EmployeeUpdateService {
                     break;
                 case "shift":
                     employee.setShift(shift);
+                    break;
+                case "band":
+                    employee.setBand(band);
                     break;
             }
         });
