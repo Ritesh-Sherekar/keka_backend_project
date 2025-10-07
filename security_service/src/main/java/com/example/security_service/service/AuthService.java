@@ -69,7 +69,8 @@ public class AuthService {
         users.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 
         Set<String> roles = userDto.getRoles();
-        Set<Roles> rolesInDb = roleRepository.findByRoleIn(roles);
+        Set<String> formattedRoles = roles.stream().map(role -> "ROLE_" + role).collect(Collectors.toSet());
+        Set<Roles> rolesInDb = roleRepository.findByRoleIn(formattedRoles);
 
         if (rolesInDb.size() != roles.size()) {
             throw new InvalidRolesException("Given role is invalid");
@@ -87,7 +88,7 @@ public class AuthService {
 
         EmployeeDto employeeDto2 = objectMapper.convertValue(employee, EmployeeDto.class);
 
-        return new UserDto(savedUsers.getUserName(), savedUsers.getPassword(), savedUsers.getRoles().stream().map(role -> role.getRole()).collect(Collectors.toSet()), employeeDto2);
+        return new UserDto(savedUsers.getUserName(), savedUsers.getEmployee().getEmployeeID(), savedUsers.getPassword(), savedUsers.getRoles().stream().map(role -> role.getRole()).collect(Collectors.toSet()), employeeDto2);
     }
 
     public JwtResponse login(@RequestBody LogIdPassword logIdPassword) {

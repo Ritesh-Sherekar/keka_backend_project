@@ -1,6 +1,7 @@
 package com.example.query_service.entity;
 
-import com.example.query_service.entity.Employee;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Department {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long departmentId;
@@ -18,6 +20,6 @@ public class Department {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager", referencedColumnName = "employeeID", nullable = true)
+    @JsonManagedReference
     private Employee manager;
-
 }

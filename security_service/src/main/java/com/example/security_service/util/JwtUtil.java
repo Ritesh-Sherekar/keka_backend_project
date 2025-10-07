@@ -38,11 +38,12 @@ public class JwtUtil {
         Map<String, Object> claims = new HashMap<>();
         claims.put("iss", "E-commerce app");
         claims.put("role", roles);
+        claims.put("userName", userName);
 
         return Jwts.builder()
                 .claims()
                 .add(claims)
-                .subject(userName)
+                .subject(users.getEmployee().getEmployeeID().toString())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 *24))
                 .and()
@@ -58,11 +59,12 @@ public class JwtUtil {
         Map<String, Object> claims = new HashMap<>();
         claims.put("iss", "Java App");
         claims.put("role", roles);
+        claims.put("userName", userName);
 
         return Jwts.builder()
                 .claims()
                 .add(claims)
-                .subject(userName)
+                .subject(users.getEmployee().getEmployeeID().toString())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 30))
                 .and()
@@ -79,11 +81,12 @@ public class JwtUtil {
         Map<String, Object> claims = new HashMap<>();
         claims.put("iss", "Java App");
         claims.put("role", roles);
+        claims.put("userName", userName);
 
         return Jwts.builder()
                 .claims()
                 .add(claims)
-                .subject(userName)
+                .subject(users.getEmployee().getEmployeeID().toString())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 ))
                 .and()
