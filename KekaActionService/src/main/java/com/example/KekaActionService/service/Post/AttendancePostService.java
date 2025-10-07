@@ -8,6 +8,8 @@ import com.example.KekaActionService.entity.Employee;
 import com.example.KekaActionService.entity.Shift;
 import com.example.KekaActionService.enums.Badge;
 import com.example.KekaActionService.enums.Status;
+import com.example.KekaActionService.exception.AlreadyClockOutException;
+import com.example.KekaActionService.exception.ClockInIDNotFoundException;
 import com.example.KekaActionService.exception.EmployeeIdNotFoundException;
 import com.example.KekaActionService.exception.NoAttendanceOnThisDayException;
 import com.example.KekaActionService.repository.AttendanceRepo;
@@ -67,8 +69,13 @@ public class AttendancePostService {
     public Attendance clockOut(AttendanceClockOutRequestDto dto){
         Employee byEmployeeID = employeeRepo.findByEmployeeID(dto.getEmployeeID()).orElseThrow(() -> new EmployeeIdNotFoundException("Employee does not exists"));
 
-        Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow();
+        Attendance attendance = attendanceRepo.findById(Math.toIntExact(dto.getId())).orElseThrow(() -> new ClockInIDNotFoundException("Clock In ID Not Found"));
 
+        if (attendance.getCheckOutTime() != null){
+            throw new AlreadyClockOutException("You Already Clock Out");
+        }
+
+        Attendance save = new Attendance();
         if (attendance.getEmployee().getEmployeeID().equals(dto.getEmployeeID())){
             if (attendance.getCheckInTime() != null && attendance.getBadge() == Badge.IN){
                 if (attendance.getCheckInTime().isBefore(dto.getCheckOutTime())){
@@ -76,11 +83,12 @@ public class AttendancePostService {
                     attendance.setBadge(Badge.OUT);
                     String grossHours = calculateGrossHours(attendance.getCheckInTime(), attendance.getCheckOutTime());
                     attendance.setGrossHours(grossHours);
-                    return attendanceRepo.save(attendance);
+                    save = attendanceRepo.save(attendance);
                 }
             }
         }
-        throw new EmployeeIdNotFoundException("Employee With Given ID Not Found");
+        //throw new EmployeeIdNotFoundException("Employee With Given ID Not Found");
+        return save;
     }
 
     // Helper Method To Calculate Gross Hours
