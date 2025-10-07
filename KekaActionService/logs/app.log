@@ -1421,3 +1421,7 @@ Caused by: oracle.jdbc.OracleDatabaseException: ORA-02275: such a referential co
 2025-10-07 11:16:02 | INFO | c.netflix.discovery.DiscoveryClient | Application version is -1: false
 2025-10-07 11:16:02 | INFO | c.netflix.discovery.DiscoveryClient | Getting all instance registry info from the eureka server
 2025-10-07 11:16:02 | INFO | c.netflix.discovery.DiscoveryClient | The response status is 200
+2025-10-07 11:20:31 | INFO | c.n.d.s.r.aws.ConfigClusterResolver | Resolving eureka endpoints via configuration
+2025-10-07 11:25:31 | INFO | c.n.d.s.r.aws.ConfigClusterResolver | Resolving eureka endpoints via configuration
+2025-10-07 11:30:31 | INFO | c.n.d.s.r.aws.ConfigClusterResolver | Resolving eureka endpoints via configuration
+2025-10-07 11:35:31 | INFO | c.n.d.s.r.aws.ConfigClusterResolver | Resolving eureka endpoints via configuration

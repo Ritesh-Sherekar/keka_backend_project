@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Service
 public class LeaveService {
@@ -36,19 +37,44 @@ public class LeaveService {
     @Autowired
     private BandRepo bandRepo;
 
-    public List<Leave> getAllLeave() {
-    return leaveRepo.findAll();
+    public List<LeaveDto> getAllLeave() {
+        return leaveRepo.findAll()
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
-    public List<Leave> getLeaveByEmployeeID(Long employeeID){
-        return leaveRepo.findByEmployee_EmployeeID(employeeID);
+    public List<LeaveDto> getLeaveByEmployeeID(Long employeeID) {
+        return leaveRepo.findByEmployee_EmployeeID(employeeID)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
-    public List<Leave> getPendingLeave() {
-        return leaveRepo.findByStatus(LeaveStatus.PENDING);
+public List<LeaveDto> getPendingLeave() {
+    return leaveRepo.findByStatus(LeaveStatus.PENDING)
+            .stream()
+            .map(this::convertToDto)
+            .collect(Collectors.toList());
+}
+    public List<LeaveDto> getApprovedLeave() {
+        return leaveRepo.findByStatus(LeaveStatus.APPROVED)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
-    public List<Leave> getApprovedLeave() {
-        return leaveRepo.findByStatus(LeaveStatus.APPROVED);
+    public List<LeaveDto> getRejectedLeave() {
+        return leaveRepo.findByStatus(LeaveStatus.REJECTED)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
-    public List<Leave> getRejectedLeave(){
-        return leaveRepo.findByStatus(LeaveStatus.REJECTED);
+
+    private LeaveDto convertToDto(Leave leave) {
+        LeaveDto dto = new LeaveDto();
+        dto.setEmployeeID(leave.getEmployee().getEmployeeID());
+        dto.setApproverID(leave.getApprover() != null ? leave.getApprover().getEmployeeID() : 0);
+        dto.setLeaveType(leave.getLeaveType());
+        dto.setReason(leave.getReason());
+        dto.setTotalLeaveDays(leave.getLeaveDays() != null ? leave.getLeaveDays().size() : 0);
+        return dto;
     }
 }

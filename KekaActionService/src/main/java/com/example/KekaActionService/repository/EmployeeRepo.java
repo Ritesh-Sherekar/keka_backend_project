@@ -10,4 +10,6 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
     Optional<Employee> findByEmployeeID(long employeeID);
 
     Optional<Employee> findEmployeeByShift_ShiftId(Long shiftId);
+
+    Optional<Employee> findByEmail(String userName);
 }
