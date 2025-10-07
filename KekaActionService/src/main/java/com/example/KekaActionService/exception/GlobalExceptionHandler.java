@@ -60,6 +60,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
 
+    // Band Not Found Exception
+    @ExceptionHandler(BandNotFoundException.class)
+    public ResponseEntity<ErrorResponses> bandNotFound(BandNotFoundException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Band Not Available", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     //Band already exists
     @ExceptionHandler(BandAlreadyExistsException.class)
     public ResponseEntity<ErrorResponses> bandAlreadyExists(BandAlreadyExistsException ex){
