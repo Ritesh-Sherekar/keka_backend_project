@@ -66,5 +66,20 @@ public class GlobalExceptionHandler {
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Band Not Available", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
+
+    // Clock-In ID not Found
+    @ExceptionHandler(ClockInIDNotFoundException.class)
+    public ResponseEntity<ErrorResponses> clockInIDNotFound(ClockInIDNotFoundException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Clock-In ID Not Found", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
+    }
+
+    // Already Clock-Out Exception
+    @ExceptionHandler(AlreadyClockOutException.class)
+    public ResponseEntity<ErrorResponses> alreadyClockOut(AlreadyClockOutException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Already Clock Out", LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_ACCEPTABLE);
+    }
+
 }
 
