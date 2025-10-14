@@ -62,44 +62,24 @@ public class GlobalExceptionHandler {
 
     // Band Not Found Exception
     @ExceptionHandler(BandNotFoundException.class)
-    public ResponseEntity<ErrorResponses> bandNotFound(BandNotFoundException ex) {
+    public ResponseEntity<ErrorResponses> bandNotFound(BandNotFoundException ex){
         ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Band Not Available", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
         return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
 
-    //Band already exists
-    @ExceptionHandler(BandAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponses> bandAlreadyExists(BandAlreadyExistsException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Band already exists", LocalDateTime.now(), HttpStatus.CONFLICT.toString());
-        return new ResponseEntity<>(responses, HttpStatus.CONFLICT);
+    // Clock-In ID not Found
+    @ExceptionHandler(ClockInIDNotFoundException.class)
+    public ResponseEntity<ErrorResponses> clockInIDNotFound(ClockInIDNotFoundException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Clock-In ID Not Found", LocalDateTime.now(), HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_FOUND);
     }
 
-    //Invalid Band
-    @ExceptionHandler(InvalidBandException.class)
-    public ResponseEntity<ErrorResponses> invalidBand(InvalidBandException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Band", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
-        return new ResponseEntity<>(responses, HttpStatus.INTERNAL_SERVER_ERROR);
+    // Already Clock-Out Exception
+    @ExceptionHandler(AlreadyClockOutException.class)
+    public ResponseEntity<ErrorResponses> alreadyClockOut(AlreadyClockOutException ex){
+        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Already Clock Out", LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.toString());
+        return new ResponseEntity<>(responses, HttpStatus.NOT_ACCEPTABLE);
     }
 
-    //Insufficient leaves
-    @ExceptionHandler(InsufficientLeavesException.class)
-    public ResponseEntity<ErrorResponses> insufficientLeaves(InsufficientLeavesException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Leaves Exauted", LocalDateTime.now(), HttpStatus.NO_CONTENT.toString());
-        return new ResponseEntity<>(responses, HttpStatus.NO_CONTENT);
-    }
-
-    //Invalid Leave
-    @ExceptionHandler(InvalidLeaveException.class)
-    public ResponseEntity<ErrorResponses> invalidBLeave(InvalidLeaveException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Leave", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
-        return new ResponseEntity<>(responses, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    //Insufficient Permission
-    @ExceptionHandler(InsufficientPermissionsException.class)
-    public ResponseEntity<ErrorResponses> insufficientPermission(InsufficientPermissionsException ex){
-        ErrorResponses responses = new ErrorResponses(ex.getMessage(), "Invalid Permission", LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.toString());
-        return new ResponseEntity<>(responses, HttpStatus.FORBIDDEN);
-    }
 }
 

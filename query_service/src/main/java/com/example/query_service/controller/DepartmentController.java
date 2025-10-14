@@ -14,16 +14,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/QueryGetDeptService")
 public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    // Get All Department
     @GetMapping("/getAllDepartment")
     public ResponseEntity<List<Department>> getAllDepartment(){
         List<Department> department = departmentService.getAllDepartment();
         return new ResponseEntity<>(department, HttpStatus.OK);
     }
+
+    // Get Department By dept Name
     @GetMapping("/getDepartmentByDepartmentName/{departmentName}")
     public ResponseEntity<Optional<Department>> getDepartmentByDepartmentName(@PathVariable String departmentName){
         Optional<Department> department = departmentService.getDepartmentByDepartmentName(departmentName);
